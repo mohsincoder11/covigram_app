@@ -1,0 +1,173 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="pl-3" routerLink="/submitreport">
+      <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+          clip-rule="evenodd" />
+      </svg>
+    </ion-buttons>
+    <ion-title class="text-blue-500 text-base">Submit Report For {{test_name}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form #form_register="ngForm" class="form">
+
+    <div class="pl-5 pr-5 mt-4">
+      <div class="relative">
+        <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+          [ngModel]="doctor_id" name="doctor_id">
+          <option disabled selected>Select Doctor</option>
+          <option *ngFor="let n of doctor_list;let i=index" value="{{n.id}}" selected>{{n.f_name}} </option>
+        </select>
+
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="doctor_id_err">Select doctor.</ion-text>
+
+    </div>
+    <div class="pl-5 pr-5 mt-4">
+      <!-- <span class="form-label">Select Doctor Name</span> -->
+      <div class="relative">
+        <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+          [ngModel]="patient_id" name="patient_id">
+          <option value="{{patient_id}}" selected>{{patient_name}}</option>
+          <option *ngFor="let m of my_member" value="{{m.id}}">{{m.f_name}} {{m.l_name}}</option>
+        </select>
+        <ion-text class="error_msg" color="danger" *ngIf="patient_id_err">Select member.</ion-text>
+
+      </div>
+    </div>
+
+    <div class="pl-5 pr-5 mt-4">
+      <span class="form-label">Date of test</span>
+      <div class="border-2 bg-white border-gray-300 p-2 rounded-md">
+        <label for="start">
+          <input type="date" id="start"ngModel name="test_date"></label>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="test_date"> This field is required.</ion-text>
+
+    </div>
+
+    <div class="pl-5 pr-5 mt-4">
+      <span class="form-label">Date of report issued</span>
+      <div class="border-2 bg-white border-gray-300 p-2 rounded-md">
+        <label for="start">
+          <input type="date" id="start"ngModel name="issue_date">
+        </label>
+      </div>
+
+      <ion-text class="error_msg" color="danger" *ngIf="issue_date"> This field is required.</ion-text>
+
+
+    </div>
+    <div class="pl-5 pr-5 mt-4" *ngIf="test_id==5">
+      <!-- <span class="form-label"> Center Name</span> -->
+      <div class="relative">
+        <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+          [ngModel]="vaccine_detail" name="vaccine_detail">
+          <option disabled>Vaccination Details</option>
+          <option>Partial Vaccinated (1 Dose)</option>
+          <option>Fully Vaccinated (2 Doses)</option>
+          <option>Booster</option>
+        </select>
+
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="vaccine_detail_err"> This field is required.</ion-text>
+
+    </div>
+
+    <div class="pl-5 pr-5 mt-4" *ngIf="test_id==6">
+      <div class="border-2 bg-white border-gray-300  rounded-md">
+        <ion-input type="text" placeholder="Other test name" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'');"
+        ngModel name="other_test_name" ></ion-input> 
+           </div>
+      <ion-text class="error_msg" color="danger" *ngIf="other_test_name"> This field is required.</ion-text>
+
+    </div>
+
+
+    <div class="pl-5 pr-5 mt-4">
+      <!-- <span class="form-label"> Center Name</span> -->
+      <div class="relative">
+        <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+          [ngModel]="center_id" name="center_id">
+          <option disabled>Select Center</option>
+          <option value="1">Center 1</option>
+          <option value="2">Center 2</option>
+          <option value="3">Center 3</option>
+          <option value="4">Center 4</option>
+          <option value="5">Center 5</option>
+        </select>
+
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="center_id_err"> This field is required.</ion-text>
+
+    </div>
+
+    <ion-row class="p-4">
+      <ion-col size="12">
+        <textarea ngModel name="description" placeholder="Description (if any)" class="effect-19" col="10"
+          rows="4"></textarea>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="p-4" style="margin-top: -6%;">
+      <label class="pl-2">
+        Prescription (if any)
+      </label>
+    </ion-row>
+
+    <ion-row class="pl-4 pr-4">
+      <ion-col size="6">
+        <div class="bg-white p-2 rounded-sm" align="center" (click)="selectImage('camera')">
+          <img src="assets/c1.png" alt="">
+          <ion-label>Camera</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="bg-white p-2 rounded-sm" align="center" (click)="selectImage('image')">
+          <img src="assets/g1.png" alt="">
+          <ion-label>Image</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row class="p-4 pt-3">
+      <label class="pl-2">
+        Upload Your Report
+      </label>
+    </ion-row>
+
+    <ion-row class="pl-4 pr-4 pt-1">
+      <ion-col size="6">
+        <div class="bg-white p-2 rounded-sm" align="center" (click)="selectImage2('camera')">
+          <img src="assets/c1.png" alt="">
+          <ion-label>Camera</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="bg-white p-2 rounded-sm" align="center" (click)="selectImage2('image')">
+          <img src="assets/g1.png" alt="">
+          <ion-label>Image</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+    <div class=" p-4 pl-5 pr-5" style="margin-top: 2%;">
+      <button expand="block" class="btn-3 w-full p-2 text-white rounded-sm" (click)="submit_form(form_register)">
+        Sumbit Report <ion-icon class="shake-horizontal ml-3" color="light" slot="end" name="arrow-forward-outline">
+        </ion-icon>
+      </button>
+    </div>
+  </form>
+  <div class="loader" *ngIf="loader_visibility">
+    <svg class="spinner" width="65px" height="65px" viewBox="0 0 50 50">
+      <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+    </svg>
+  </div>
+
+</ion-content>

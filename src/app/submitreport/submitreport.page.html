@@ -1,0 +1,47 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="pl-3" routerLink="/dashboard">
+      <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+          clip-rule="evenodd" />
+      </svg>
+    </ion-buttons>
+    <ion-title class="text-blue-500 text-base">Submit Your Report </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6"  *ngFor="let test of test_type_list;">
+        <div
+          class="content-item flex justify-between p-4 bg-gray-50 hover:bg-blue-100 rounded-md shadow-lg border-2 border-gray-300" routerLink="/uploadreport/{{test.id}}">
+          <div>
+            <img src="assets/{{test.test_image}}" alt="">
+          </div>
+          <div>
+            <ion-label class="text-black text-sm">{{test.test_name}}
+            </ion-label>
+          </div>
+        </div>
+      </ion-col>
+     
+    </ion-row>
+  </ion-grid>
+
+
+
+
+  <div class="loader" *ngIf="loader_visibility">
+    <svg class="spinner" width="65px" height="65px" viewBox="0 0 50 50">
+      <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+    </svg>
+  </div>
+
+</ion-content>
+
+
+
+<app-footer></app-footer>

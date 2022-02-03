@@ -1,0 +1,243 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="pl-3" routerLink="/doctordash">
+      <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+          clip-rule="evenodd" />
+      </svg>
+    </ion-buttons>
+    <ion-title class="text-blue-500 text-base" style="text-align: center;">Total Register </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<!-- <div class="flex justify-between  p-4" style="background-color: #1E9EEB;">
+  <div routerLink="/dashboard">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500 bg-white rounded-lg" viewBox="0 0 20 20"
+      fill="currentColor" routerLink="/dashboard">
+      <path fill-rule="evenodd"
+        d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+        clip-rule="evenodd" />
+    </svg>
+  </div>
+  <div>
+    <ion-title class="text-white text-center  mr-12">Patient Record </ion-title>
+  </div>
+</div> -->
+
+
+<ion-content>
+
+  <ion-row class="pl-3 pr-3 ">
+    <div class="bg-gray-200 rounded-xl border-gray-300" style="width: 100%; ">
+      <ion-input class="text-gray-500 text-sm p-1" placeholder="Search your reports" id="search">
+        <ion-icon name="search" class="text-xl text-blue-600" style="margin-left: 7px;"></ion-icon>
+      </ion-input>
+    </div>
+  </ion-row>
+
+
+  <!-- ==============
+            1nd Card
+         ==============    -->
+  <ion-card class="border-b-4 border-green-400">
+    <div class="flex justify-between" align="center">
+      <div class="bg-blue-400 rounded-br-lg  h-6">
+        <p class="text-white text-xs p-1">Date: 12/07/2021</p>
+      </div>
+    </div>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Name :</span> Nilesh Kumar</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Mobile No. :</span> 7876789087</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Date
+            of visit :</span> 22 June</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label><span class="text-black font-bold">Locality :</span> Nagpur</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-label><span class="text-black font-bold">Report
+            Name :</span>PCR Test</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <button class="bg-red-500 hover:bg-green-400 text-white pr-2  py-1 px-2 rounded inline-flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+            <path fill-rule="evenodd"
+              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+              clip-rule="evenodd" />
+          </svg>
+          <span>&nbsp; View Report</span>
+        </button>
+        <!-- <button expand="block" size="small" color="primary">
+          Upload Report
+          <button> -->
+        <!-- <div class="w-full p-2">
+          <input type="file" id="file" />
+          <label for="file" class="w-full text-center">Upload Report</label>
+          <span class="focus-border">
+            <i></i>
+          </span>
+        </div> -->
+        <!-- <ion-label><span class="text-black font-bold">Prescriptin
+            Note:</span> &nbsp;
+          <ion-icon class="text-lg text-red-600" name="cloud-download"></ion-icon>
+        </ion-label> -->
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <!-- ==============
+                2nd Card
+             ==============    -->
+
+
+  <ion-card class="border-b-4 border-green-400">
+    <div class="flex justify-between" align="center">
+      <div class="bg-blue-400 rounded-br-lg  h-6">
+        <p class="text-white text-xs p-1">Date: 12/07/2021</p>
+      </div>
+    </div>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Name :</span> Ashwini Talware</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Mobile No. :</span> 7876789087</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Date
+            of visit :</span> 22 June</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label><span class="text-black font-bold">Locality :</span> Nagpur</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-label><span class="text-black font-bold">Report
+            Name :</span>PCR Test</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <button class="bg-red-500 hover:bg-green-400 text-white pr-2  py-1 px-2 rounded inline-flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+            <path fill-rule="evenodd"
+              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+              clip-rule="evenodd" />
+          </svg>
+          <span>&nbsp; View Report</span>
+        </button>
+        <!-- <ion-label><span class="text-black font-bold">Prescriptin
+                      Note:</span> &nbsp;
+                    <ion-icon class="text-lg text-red-600" name="cloud-download"></ion-icon>
+                  </ion-label> -->
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <!-- ==============
+                3nd Card
+             ==============    -->
+
+  <ion-card class="border-b-4 border-green-400">
+    <div class="flex justify-between" align="center">
+      <div class="bg-blue-400 rounded-br-lg  h-6">
+        <p class="text-white text-xs p-1">Date: 12/07/2021</p>
+      </div>
+    </div>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Name :</span> Niraj Vyas</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Mobile No. :</span> 7876789087</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Date
+            of visit :</span> 22 June</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label><span class="text-black font-bold">Locality :</span> Nagpur</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-label><span class="text-black font-bold">Report
+            Name :</span>PCR Test</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <button class="bg-red-500 hover:bg-green-400 text-white pr-2  py-1 px-2 rounded inline-flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+            <path fill-rule="evenodd"
+              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+              clip-rule="evenodd" />
+          </svg>
+          <span>&nbsp; View Report</span>
+        </button>
+        <!-- <ion-label><span class="text-black font-bold">Prescriptin
+                      Note:</span> &nbsp;
+                    <ion-icon class="text-lg text-red-600" name="cloud-download"></ion-icon>
+                  </ion-label> -->
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+
+</ion-content>
+
+
+
+<!-- <div class="flex justify-between  rounded-tr-3xl  rounded-tl-3xl  shadow-2xl footer_div">
+  <div class="pl-4">
+    <ion-tab-button tab="music" routerLink="/doctordash">
+      <ion-label><b>Home</b></ion-label>
+      <ion-icon style="font-size: 15px; font-weight: 500; margin-top: 2;" name="home" color="light"></ion-icon>
+    </ion-tab-button>
+  </div>
+
+  <div>
+    <ion-tab-button tab="music" routerLink="/todayapp">
+      <ion-label><b>Appointment</b></ion-label>
+      <ion-icon style="font-size: 15px; font-weight: 500; margin-top: 2;" name="document-text" color="light"></ion-icon>
+    </ion-tab-button>
+  </div>
+
+  <div class="pr-4">
+    <ion-tab-button tab="games" routerLink="/reports">
+      <ion-label><b>Reports</b></ion-label>
+      <ion-icon style="font-size: 15px; font-weight: 500;" color="light" name="add-circle"></ion-icon>
+    </ion-tab-button>
+  </div>
+
+  <div class="pr-4" routerLink="/profile">
+    <ion-tab-button tab="games">
+      <ion-label><b>Profile</b></ion-label>
+      <ion-icon style="font-size: 15px; font-weight: 500;" color="light" name="person"></ion-icon>
+    </ion-tab-button>
+  </div>
+
+</div> -->

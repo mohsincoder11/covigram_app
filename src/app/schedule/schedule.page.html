@@ -1,0 +1,318 @@
+<!-- <div class="flex justify-between  p-4" style="background-color: #1E9EEB;">
+  <div routerLink="/dashboard">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500 bg-white rounded-lg" viewBox="0 0 20 20"
+      fill="currentColor" routerLink="/dashboard">
+      <path fill-rule="evenodd"
+        d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+        clip-rule="evenodd" />
+    </svg>
+  </div>
+</div> -->
+
+<div class="flex justify-between  p-4" style="background-color: #ffffff;">
+  <div routerLink="/dashboard">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd"
+        d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+        clip-rule="evenodd" />
+    </svg>
+  </div>
+  <div>
+    <ion-title class="text-blue-500 text-center  mr-12">Your Schedule</ion-title>
+  </div>
+</div>
+
+<ion-content>
+  <ion-segment mode="ios" value="upcoming" class="parent-border-radius" (ionChange)='segmentChanged($event)'>
+    <ion-segment-button value="upcoming"> Upcoming</ion-segment-button>
+    <ion-segment-button value="completed"> Completed</ion-segment-button>
+    <ion-segment-button value="canceled"> Canceled</ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="switchTab == 'upcoming'">
+    <!-- ==============
+            1nd Card
+         ==============    -->
+    <ion-card class=" border-l-4 border-green-400">
+      <ion-row>
+        <ion-col size="1">
+          <img src="assets/userbook.png" alt="">
+        </ion-col>
+        <ion-col size="8" class="pr-3">
+          <ion-label class="text-black"><b>Dr.Rohan Sharma</b> <br>
+            <p><span class="text-green-400 text-xs">Time : </span><span class="text-xs">10:00 AM</span><br>
+              <span class="text-green-400 text-xs">Date : </span><span class="text-xs">20
+                June 2021</span>
+            </p>
+          </ion-label>
+        </ion-col>
+        <ion-col size="4"></ion-col>
+        <ion-col size="8">
+          <div align="right" style="margin-top: -25%;">
+            <button class="p-1 bg-blue-600 text-white rounded-sm shadow-md">
+              Canceled
+            </button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <!-- ==============
+            2nd Card
+         ==============    -->
+    <ion-card class=" border-l-4 border-green-400">
+      <ion-row>
+        <ion-col size="1">
+          <img src="assets/userbook.png" alt="">
+        </ion-col>
+        <ion-col size="8" class="pr-3">
+          <ion-label class="text-black"><b>Dr.Rohan Sharma</b> <br>
+            <p><span class="text-green-400 text-xs">Time : </span><span class="text-xs">01:00 AM</span><br>
+              <span class="text-green-400 text-xs">Date : </span><span class="text-xs">20
+                Dec 2021</span>
+            </p>
+          </ion-label>
+        </ion-col>
+        <ion-col size="4"></ion-col>
+        <ion-col size="8">
+          <div align="right" style="margin-top: -25%;">
+            <button class="p-1 bg-blue-600 text-white rounded-sm shadow-md">
+              Canceled
+            </button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <!-- ==============
+            2nd Card
+         ==============    -->
+    <ion-card class=" border-l-4 border-green-400">
+      <ion-row>
+        <ion-col size="1">
+          <img src="assets/userbook.png" alt="">
+        </ion-col>
+        <ion-col size="8" class="pr-3">
+          <ion-label class="text-black"><b>Dr.Rohan Sharma</b> <br>
+            <p><span class="text-green-400 text-xs">Time : </span><span class="text-xs">03:00 AM</span><br>
+              <span class="text-green-400 text-xs">Date : </span><span class="text-xs">25
+                July 2021</span>
+            </p>
+          </ion-label>
+        </ion-col>
+        <ion-col size="4"></ion-col>
+        <ion-col size="8">
+          <div align="right" style="margin-top: -25%;">
+            <button class="p-1 bg-blue-600 text-white rounded-sm shadow-md">
+              Canceled
+            </button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+  </div>
+
+
+
+
+  <div *ngIf="switchTab == 'completed'">
+    <!-- ==============
+            2nd Card
+         ==============    -->
+    <ion-card class=" border-l-4 border-green-400">
+      <ion-row>
+        <ion-col size="1">
+          <img src="assets/userbook.png" alt="">
+        </ion-col>
+        <ion-col size="8" class="pr-3">
+          <ion-label class="text-black"><b>Dr.Rohan Sharma</b> <br>
+            <p><span class="text-green-400 text-xs">Time : </span><span class="text-xs">03:00 AM</span> &nbsp;
+              <span class="text-green-400 text-xs">Date : </span><span class="text-xs">25
+                July 2021</span>
+            </p>
+          </ion-label>
+        </ion-col>
+        <!-- <ion-col size="4"></ion-col>
+        <ion-col size="8">
+          <div align="right" style="margin-top: -25%;">
+            <button class="p-1 bg-blue-600 text-white rounded-sm shadow-md">
+              Canceled
+            </button>
+          </div>
+        </ion-col> -->
+      </ion-row>
+    </ion-card>
+
+
+
+    <!-- ==============
+            2nd Card
+         ==============    -->
+    <ion-card class=" border-l-4 border-green-400">
+      <ion-row>
+        <ion-col size="1">
+          <img src="assets/userbook.png" alt="">
+        </ion-col>
+        <ion-col size="8" class="pr-3">
+          <ion-label class="text-black"><b>Dr.Rohan Sharma</b> <br>
+            <p><span class="text-green-400 text-xs">Time : </span><span class="text-xs">03:00 AM</span>&nbsp;
+              <span class="text-green-400 text-xs">Date : </span><span class="text-xs">25
+                July 2021</span>
+            </p>
+          </ion-label>
+        </ion-col>
+        <!-- <ion-col size="4"></ion-col>
+        <ion-col size="8">
+          <div align="right" style="margin-top: -25%;">
+            <button class="p-1 bg-blue-600 text-white rounded-sm shadow-md">
+              Canceled
+            </button>
+          </div>
+        </ion-col> -->
+      </ion-row>
+    </ion-card>
+
+
+    <!-- ==============
+            2nd Card
+         ==============    -->
+    <ion-card class=" border-l-4 border-green-400">
+      <ion-row>
+        <ion-col size="1">
+          <img src="assets/userbook.png" alt="">
+        </ion-col>
+        <ion-col size="8" class="pr-3">
+          <ion-label class="text-black"><b>Dr.Rohan Sharma</b> <br>
+            <p><span class="text-green-400 text-xs">Time : </span><span class="text-xs">03:00 AM</span>&nbsp;
+              <span class="text-green-400 text-xs">Date : </span><span class="text-xs">25
+                July 2021</span>
+            </p>
+          </ion-label>
+        </ion-col>
+        <!-- <ion-col size="4"></ion-col>
+        <ion-col size="8">
+          <div align="right" style="margin-top: -25%;">
+            <button class="p-1 bg-blue-600 text-white rounded-sm shadow-md">
+              Canceled
+            </button>
+          </div>
+        </ion-col> -->
+      </ion-row>
+    </ion-card>
+
+
+  </div>
+
+
+  <div *ngIf="switchTab == 'canceled'">
+    <!-- ==============
+            2nd Card
+         ==============    -->
+    <ion-card class=" border-l-4 border-green-400">
+      <ion-row>
+        <ion-col size="1">
+          <img src="assets/userbook.png" alt="">
+        </ion-col>
+        <ion-col size="8" class="pr-3">
+          <ion-label class="text-black"><b>Dr.Rohan Sharma</b> <br>
+            <p><span class="text-green-400 text-xs">Time : </span><span class="text-xs">03:00 AM</span>&nbsp;
+              <span class="text-green-400 text-xs">Date : </span><span class="text-xs">25
+                July 2021</span>
+            </p>
+          </ion-label>
+        </ion-col>
+        <!-- <ion-col size="4"></ion-col>
+        <ion-col size="8">
+          <div align="right" style="margin-top: -25%;">
+            <button class="p-1 bg-blue-600 text-white rounded-sm shadow-md">
+              Canceled
+            </button>
+          </div>
+        </ion-col> -->
+      </ion-row>
+    </ion-card>
+
+
+    <!-- ==============
+            2nd Card
+         ==============    -->
+    <ion-card class=" border-l-4 border-green-400">
+      <ion-row>
+        <ion-col size="1">
+          <img src="assets/userbook.png" alt="">
+        </ion-col>
+        <ion-col size="8" class="pr-3">
+          <ion-label class="text-black"><b>Dr.Rohan Sharma</b> <br>
+            <p><span class="text-green-400 text-xs">Time : </span><span class="text-xs">03:00 AM</span>&nbsp;
+              <span class="text-green-400 text-xs">Date : </span><span class="text-xs">25
+                July 2021</span>
+            </p>
+          </ion-label>
+        </ion-col>
+        <!-- <ion-col size="4"></ion-col>
+        <ion-col size="8">
+          <div align="right" style="margin-top: -25%;">
+            <button class="p-1 bg-blue-600 text-white rounded-sm shadow-md">
+              Canceled
+            </button>
+          </div>
+        </ion-col> -->
+      </ion-row>
+    </ion-card>
+
+    <!-- ==============
+            2nd Card
+         ==============    -->
+    <ion-card class=" border-l-4 border-green-400">
+      <ion-row>
+        <ion-col size="1">
+          <img src="assets/userbook.png" alt="">
+        </ion-col>
+        <ion-col size="8" class="pr-3">
+          <ion-label class="text-black"><b>Dr.Rohan Sharma</b> <br>
+            <p><span class="text-green-400 text-xs">Time : </span><span class="text-xs">03:00 AM</span>&nbsp;
+              <span class="text-green-400 text-xs">Date : </span><span class="text-xs">25
+                July 2021</span>
+            </p>
+          </ion-label>
+        </ion-col>
+        <!-- <ion-col size="4"></ion-col>
+        <ion-col size="8">
+          <div align="right" style="margin-top: -25%;">
+            <button class="p-1 bg-blue-600 text-white rounded-sm shadow-md">
+              Canceled
+            </button>
+          </div>
+        </ion-col> -->
+      </ion-row>
+    </ion-card>
+
+
+  </div>
+
+</ion-content>
+
+<div class="flex justify-between  rounded-tr-3xl  rounded-tl-3xl  shadow-2xl footer_div">
+  <div class="pl-4">
+    <ion-tab-button tab="music" routerLink="/dashboard">
+      <ion-label><b>Home</b></ion-label>
+      <ion-icon style="font-size: 15px; font-weight: 500; margin-top: 2;" name="home" color="light"></ion-icon>
+    </ion-tab-button>
+  </div>
+
+  <div>
+    <ion-tab-button tab="games" routerLink="/book">
+      <ion-label><b>Book</b></ion-label>
+      <ion-icon style="font-size: 15px; font-weight: 500;" color="light" name="add-circle"></ion-icon>
+    </ion-tab-button>
+  </div>
+
+  <div class="pr-4">
+    <ion-tab-button tab="games" routerLink="/schedule">
+      <ion-label><b>Schedule</b></ion-label>
+      <ion-icon style="font-size: 15px; font-weight: 500;" color="light" name="calendar-clear"></ion-icon>
+    </ion-tab-button>
+  </div>
+
+</div>

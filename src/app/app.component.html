@@ -1,3 +1,59 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" contentId="main" menuClose="left" (ionWillOpen)="get_session_data()">
+    <ion-content class="menubar">
+      <div align="center" class="pt-3  rounded-br-lg rounded-bl-lg footer_div">
+        <img src="{{img_url}}" class="profile_img" alt="">
+        <ion-text class="pt-3" color="light"><b>{{session_data.f_name}} {{session_data.l_name}}</b><br>
+          <p class="text-sm">{{session_data.email_username}}</p><br>
+        </ion-text>
+      </div>
+
+      <ion-list class="menu-items" lines="none">
+        <ion-menu-toggle auto-hide="false">
+
+          <ion-item lines="none" routerLink="/addfamilymemeber">
+            <ion-icon color="primary" class="text-base" name="person-add-outline"></ion-icon>
+            <ion-text color="dark" class="pl-5 text-sm">Add Family Member</ion-text>
+          </ion-item>
+
+          <ion-item routerLink="/feedback">
+            <ion-icon color="primary" class="text-lg" name="chatbubble-ellipses-outline"></ion-icon>
+            <ion-text color="dark" class="pl-5">Feedback</ion-text>
+          </ion-item>
+
+          <ion-item (click)="open_playstore()">
+            <ion-icon color="primary" class="text-lg" name="star-outline"></ion-icon>
+            <ion-text color="dark" class="pl-5">Rate App</ion-text>
+          </ion-item>
+
+          <ion-item (click)="socialshare()">
+            <ion-icon color="primary" class="text-lg" name="share-social-outline"></ion-icon>
+            <ion-text color="dark" class="pl-5">Share & Invite</ion-text>
+          </ion-item>
+
+          <ion-item routerLink="/about">
+            <ion-icon color="primary" class="text-lg" name="information-circle-outline"></ion-icon>
+            <ion-text color="dark" class="pl-5">About Us</ion-text>
+          </ion-item>
+
+          <ion-item routerLink="/privacypolicy">
+            <ion-icon color="primary" class="text-lg" name="help-circle-outline"></ion-icon>
+            <ion-text color="dark" class="pl-5">Privacy Policy</ion-text>
+          </ion-item>
+
+          <!-- <ion-item>
+            <ion-icon color="primary" class="text-lg" name="call"></ion-icon>
+            <ion-text color="dark" class="pl-5"><b>Contact Us</b></ion-text>
+          </ion-item> -->
+
+          <ion-item (click)="log_out()">
+            <ion-icon color="primary" class="text-lg" name="log-out-outline"></ion-icon>
+            <ion-text color="dark" class="pl-5">Log Out</ion-text>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main">
+  </ion-router-outlet>
 </ion-app>

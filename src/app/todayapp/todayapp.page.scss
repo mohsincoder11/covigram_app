@@ -1,0 +1,31 @@
+.footer_div {
+  background: linear-gradient(90deg, #4BE3C1, #1E9EEB);
+}
+
+.border-radius-on-button ion-segment-button {
+  --background: lightpink;
+  --background-checked: lightblue;
+  --border-radius: 50%;
+}
+
+.fix-ripple ion-segment-button {
+  --border-radius: 20px;
+  --indicator-transition: none;
+
+  overflow: hidden;
+}
+
+.parent-border-radius {
+  //   background: #e5e5e5;
+  background: linear-gradient(90deg, #4BE3C1, #1E9EEB);
+  border-radius: 0px 0px 0 0;
+}
+
+/* This is added for the iOS segment indicator */
+.parent-border-radius ion-segment-button:first-of-type {
+  --border-radius: 5px 5px 5px 5px;
+}
+
+.parent-border-radius ion-segment-button:last-of-type {
+  --border-radius: 5px 5px 5px 5px;
+}

@@ -1,0 +1,129 @@
+<div class="flex justify-start  p-4" style="background-color: #ffffff;">
+  <div routerLink="/dashboard">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd"
+        d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+        clip-rule="evenodd" />
+    </svg>
+  </div>
+  <div>
+    <ion-title class="text-blue-500 text-center">Edit Profile </ion-title>
+  </div>
+</div>
+
+<ion-content>
+  <form #form_register="ngForm" class="form">
+
+  <div class="image_container text-center">
+    <label class="fa_icon_span" for="file-input" (click)="selectImage()">
+      <ion-icon name="camera-outline" class="faicon"></ion-icon>
+    </label>
+    <img src="{{img_url}}" id="profile_img" alt="" (click)="selectImage()">
+
+  </div>
+
+  <ion-row class="p-4">
+    <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300 rounded-sm">
+        <ion-input type="text" placeholder="First Name" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'');"
+          [(ngModel)]="session_data.f_name" name="f_name"></ion-input>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="f_name"> This field is required.</ion-text>
+
+    </ion-col>
+
+    <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300 rounded-sm">
+        <ion-input type="text" placeholder="Last Name" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'');"
+          [(ngModel)]="session_data.l_name" name="l_name"></ion-input>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="l_name"> This field is required.</ion-text>
+
+    </ion-col>
+
+    <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300 rounded-sm">
+        <ion-input placeholder="Age" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+          [(ngModel)]="session_data.age" name="age"></ion-input>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="age"> This field is required.</ion-text>
+
+    </ion-col>
+
+    <ion-col size="12">
+      <div class="relative">
+        <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+          [(ngModel)]="session_data.gender" name="gender">
+          <option disabled>Gender</option>
+          <option>Female</option>
+          <option>Male</option>
+          <option>Other</option>
+        </select>
+        <!-- <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+        </div> -->
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="gender"> Select gender.</ion-text>
+
+    </ion-col>
+
+    <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300 rounded-sm">
+        <ion-input placeholder="Email / Username" type="email" [(ngModel)]="session_data.email_username" name="email_username" (keyup)="check_email_username_Exist($event)">
+        </ion-input>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="email_username"> This field is required.</ion-text>
+      <ion-text class="error_msg" color="danger" *ngIf="email_username_exist"> This username/ email already exist. Try
+        something else.</ion-text>
+    </ion-col>
+
+    <!-- <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300 rounded-sm">
+        <ion-input placeholder="Password"></ion-input>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="password"> This field is required.</ion-text>
+
+    </ion-col> -->
+
+    <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300 rounded-sm">
+        <ion-input placeholder="Mobile Number" [(ngModel)]="session_data.mobile" name="mobile"></ion-input>
+      </div>
+      <ion-text class="error_msg" color="danger"  *ngIf="mobile_length"> Enter mobile number of 10 digits.
+      </ion-text>
+    </ion-col>
+
+    <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300 rounded-sm">
+        <ion-input placeholder="State" [(ngModel)]="session_data.state" name="state"></ion-input>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="state"> This field is required.</ion-text>
+
+    </ion-col>
+
+    <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300 rounded-sm">
+        <ion-input placeholder="Country" [(ngModel)]="session_data.country" name="country"></ion-input>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="country"> This field is required.</ion-text>
+
+    </ion-col>
+  </ion-row>
+
+
+  <div class="pb-6 pl-6 pr-6">
+    <button expand="block" class="btn-3 w-full p-2 text-white rounded-sm" (click)="update_profile(form_register)">
+      Save Changes <ion-icon class="shake-horizontal ml-3" color="light" slot="end" name="arrow-forward-outline">
+      </ion-icon>
+    </button>
+  </div>
+</form>
+
+<div class="loader" *ngIf="loader_visibility">
+  <svg class="spinner" width="65px" height="65px" viewBox="0 0 50 50">
+    <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+  </svg>
+</div>
+
+</ion-content>

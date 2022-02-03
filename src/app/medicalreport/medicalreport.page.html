@@ -1,0 +1,102 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="pl-3" routerLink="/dashboard">
+      <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+          clip-rule="evenodd" />
+      </svg>
+    </ion-buttons>
+    <ion-title class="text-blue-500 text-base">Medical Report </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="pl-5 pr-5 mt-4">
+    <!-- <span class="form-label">Select Doctor Name</span> -->
+    <div class="relative">
+      <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+        [ngModel]="patient_id" name="patient_id" (change)="get_medical_report($event,2)">
+        <option value="{{patient_id}}" selected>{{patient_name}}</option>
+        <option *ngFor="let m of my_member" value="{{m.id}}">{{m.f_name}} {{m.l_name}}</option>
+      </select>
+      <!-- <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+      </div> -->
+    </div>
+  </div>
+  <br>
+  <!-- ==============
+            1nd Card
+         ==============    -->
+  <ion-card class="border-b-4 border-green-400 bg-white" *ngFor="let r of report_list;">
+    <div class="flex justify-between" align="center">
+      <div class="bg-blue-400 rounded-br-lg  h-6">
+        <p class="text-white text-xs p-1">test Date: {{r.test_date}}</p>
+      </div>
+    </div>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-label class="text-sm"><span class="text-black font-bold">Uploaded By Doctor :</span> Dr. {{r.d_fname}}
+          {{r.d_lname}}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Name :</span> {{r.f_name}} {{r.l_name}}
+        </ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Mobile No. :</span> {{r.mobile}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-label class="text-sm"><span class="text-black font-bold">Date
+            of visit :</span> {{r.test_date}}</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label><span class="text-black font-bold">Locality :</span> {{r.state}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-label><span class="text-black font-bold">Report
+            Name :</span> {{r.test_name}}</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label><span class="text-black font-bold" (click)="download_file(r.id)">Prescription
+            Note:</span> &nbsp;
+          <ion-icon class="text-lg text-red-600" name="cloud-download"></ion-icon>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+  <div class="no_report_found" *ngIf="no_report">
+    <ion-text>No report found for selected member.</ion-text>
+  </div>
+  <!-- ==============
+                2nd Card
+             ==============    -->
+
+
+
+
+  <div class="loader" *ngIf="loader_visibility">
+    <svg class="spinner" width="65px" height="65px" viewBox="0 0 50 50">
+      <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+    </svg>
+  </div>
+
+</ion-content>
+
+
+<app-footer></app-footer>

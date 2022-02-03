@@ -1,0 +1,127 @@
+<ion-row style="margin-top: 1vh;">
+  <ion-col size="2">
+    <div>
+      <ion-menu-button>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+      </ion-menu-button>
+    </div>
+  </ion-col>
+
+  <ion-col size="8">
+    <div align="center">
+      <img class="pr-5" src="assets/civigram_logo.png" alt="" width="50%" height="50%">
+    </div>
+  </ion-col>
+  <!-- <ion-col size="2">
+    <div>
+      <img src="assets/man.png" alt="" width="50%" height="50%">
+    </div>
+  </ion-col> -->
+</ion-row>
+
+
+<ion-content>
+
+  <div class="pl-1 pr-1">
+    <ion-card>
+      <ion-slides #slider loop="true" pager="true" [options]="slideOptions" (ionSlideTouchEnd)="slideChanged()">
+        <ion-slide>
+          <img src="assets/s2.png" alt="">
+        </ion-slide>
+        <ion-slide>
+          <img src="assets/s1.png" alt="">
+        </ion-slide>
+        <!-- <ion-slide>
+          <img src="assets/s3.jpg" alt="">
+        </ion-slide> -->
+      </ion-slides>
+    </ion-card>
+  </div>
+
+  <ion-grid fixed class="pl-2 pr-2">
+    <ion-row>
+      <ion-col size="6">
+        <div class="flex justify-between card-2 p-4 rounded-lg shadow-lg" routerLink="/todayapp">
+          <div>
+            <img src="assets/doctor15.png" alt="">
+          </div>
+          <div>
+            <ion-label class="text-sm text-white"><b>New<br>Patients</b></ion-label>
+          </div>
+          <div>
+            <ion-label class="text-white"><b>01</b></ion-label>
+          </div>
+        </div>
+      </ion-col>
+
+      <ion-col size="6">
+        <div class="flex justify-between card-3 p-4 rounded-lg shadow-lg" routerLink="/totalregister">
+          <div>
+            <img src="assets/patient15.png" alt="" >
+          </div>
+          <div>
+            <ion-label class="text-sm text-white"><b>Total<br>Patient</b></ion-label>
+          </div>
+          <div>
+            <ion-label class="text-white"><b>05</b></ion-label>
+          </div>
+        </div>
+      </ion-col>
+
+      <!-- <ion-col size="6">
+        <div class="flex justify-between card-3 p-4 rounded-lg shadow-lg" routerLink="/totalregister">
+          <div>
+            <img src="assets/medical-history.png" alt="">
+          </div>
+          <div>
+            <ion-label class="text-sm text-white"><b>Total <br>RegisterPatient</b></ion-label>
+          </div>
+          <div>
+            <ion-label><b>05</b></ion-label>
+          </div>
+        </div>
+      </ion-col> -->
+    </ion-row>
+  </ion-grid>
+
+  <ion-card class="p-5 bg-white">
+    <img src="assets/power-bi-line.png" alt="">
+  </ion-card>
+
+</ion-content>
+
+
+
+<div class="flex justify-between  rounded-tr-3xl  rounded-tl-3xl  shadow-2xl footer_div">
+  <div class="pl-4">
+    <ion-tab-button tab="music" routerLink="/doctordash">
+      <ion-label><b>Home</b></ion-label>
+      <ion-icon style="font-size: 15px; font-weight: 500; margin-top: 2;" name="home" color="light"></ion-icon>
+    </ion-tab-button>
+  </div>
+
+  <div>
+    <ion-tab-button tab="music" routerLink="/todayapp">
+      <ion-label><b>New Patients</b></ion-label>
+      <ion-icon style="font-size: 15px; font-weight: 500; margin-top: 2;" name="document-text" color="light"></ion-icon>
+    </ion-tab-button>
+  </div>
+
+  <div>
+    <ion-tab-button tab="games" routerLink="/reports">
+      <ion-label><b> All Reports</b></ion-label>
+      <ion-icon style="font-size: 15px; font-weight: 500;" color="light" name="add-circle"></ion-icon>
+    </ion-tab-button>
+  </div>
+
+  <div class="pr-4" routerLink="/totalregister">
+    <ion-tab-button tab="games">
+      <ion-label><b>Total Patients </b></ion-label>
+      <ion-icon style="font-size: 15px; font-weight: 500;" color="light" name="book"></ion-icon>
+    </ion-tab-button>
+  </div>
+
+</div>

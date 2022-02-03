@@ -1,0 +1,267 @@
+<div class="flex justify-start p-4" style="background-color: #ffffff;">
+  <div routerLink="/reports">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd"
+        d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+        clip-rule="evenodd" />
+    </svg>
+  </div>
+  <div style="margin-left: 10%;">
+    <ion-title class="text-blue-500 text-center  mr-12">Upload Report </ion-title>
+  </div>
+</div>
+
+
+
+<ion-content>
+
+  <div class="pl-5 pr-5">
+    <span class="form-label">Date of test</span>
+    <div class="border-2  bg-white border-gray-200 p-2">
+      <label for="start" class="pl-5">Select Date : &nbsp;<input type="date" id="start" name="trip-start"
+          value="2018-07-22" min="2018-01-01" max="2018-12-31"></label>
+    </div>
+    <!-- <span class="form-label">Date of test</span>
+    <div class="border-2 border-gray-200 p-2">
+      <input type="text" placeholder="Enter Test Date" onfocus="(this.type='date')"
+        onblur="if(this.value==''){this.type='text'}">
+    </div> -->
+  </div>
+  <br>
+  <div class="pl-5 pr-5">
+    <span class="form-label">Date of report issued</span>
+    <div class="border-2 bg-white border-gray-200 p-2">
+      <label for="start" class="pl-5">Select Date : &nbsp;<input type="date" id="start" name="trip-start"
+          value="2018-07-22" min="2018-01-01" max="2018-12-31"></label>
+    </div>
+    <!-- <span class="form-label">Date of report issued</span>
+    <div class="border-2 border-gray-200 p-2">
+      <input type="text" placeholder="Enter Report Issued Date" onfocus="(this.type='date')"
+        onblur="if(this.value==''){this.type='text'}">
+    </div> -->
+  </div>
+
+
+
+  <!-- <div class="pl-5 pr-5">
+    <div class="border-2 border-gray-200 p-2">
+      <label for="start" class="text-white">Starting Date(s): </label>
+      <input type="date" id="start" name="starting-date" value="(DATE)" min="(DATE)" max="(DATE)">
+    </div>
+  </div> -->
+
+
+  <!-- <div class="pl-5 pr-5 ">
+    <span class="form-label">Date of test</span>
+    <div class="border-2 border-gray-200 p-2">
+      <input type="date" required style="width: fit-content;">
+    </div>
+  </div> -->
+
+  <!-- <br>
+  <div class="pl-5 pr-5 ">
+    <span class="form-label">Date of report issued</span>
+    <div class="form-group border-2 border-gray-200 p-2">
+      <input class="form-control" type="date" required>
+    </div>
+  </div> -->
+  <br>
+  <div class="pl-5 pr-5 ">
+    <span class="form-label">Types of test</span>
+    <div class="relative">
+      <select
+        class="block appearance-none w-full border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-400"
+        id="grid-state">
+        <option>Select Test</option>
+        <option>Antigen Rapid Test</option>
+        <option>PCR Test</option>
+        <option>Rapid PCR Test</option>
+        <option>Antibody Test</option>
+        <option>Other</option>
+      </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="pl-5 pr-5 ">
+    <span class="form-label"> Center Name</span>
+    <div class="relative">
+      <select
+        class="block appearance-none w-full border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-400"
+        id="grid-state">
+        <option>Select Center</option>
+        <option>Center 1</option>
+        <option>Center 2</option>
+        <option>Center 3</option>
+        <option>Center 4</option>
+        <option>Center 5</option>
+      </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="pl-5 pr-5 ">
+    <!-- <input class=" effect-19" type="text" placeholder=""> -->
+    <div class="w-full">
+      <input type="file" id="file" />
+      <label for="file" class="w-full text-center">Prescription if any</label>
+      <span class="focus-border">
+        <i></i>
+      </span>
+    </div>
+  </div>
+
+
+
+  <div class=" p-4 pt-2 pl-5 pr-5" style="margin-top: 10%;">
+    <ion-button class="w-full -mt-5" expand="block" color="primary">
+      Sumbit Report <ion-icon class="shake-horizontal ml-3" color="light" slot="end" name="arrow-forward-outline">
+      </ion-icon>
+    </ion-button>
+  </div>
+
+
+
+  <!-- <div class="p-5">
+    <ion-card class="bg-white rounded-md shadow-2xl p-4 " style="margin-top: 10%;">
+
+      <div class="flex justify-center border-b-2 border-gray-200 border-dashed pt-2">
+        <input type="file" id="file" />
+        <label for="file" class="btn-1">
+          <ion-icon class="text-lg" name="cloud-upload"></ion-icon>&nbsp;&nbsp; Upload file
+        </label>
+      </div>
+
+      <div class="flex justify-center pt-2">
+        <input type="file" id="file" />
+        <label for="" class="btn-1">
+          <ion-icon class="text-lg" name="camera"></ion-icon>&nbsp;&nbsp; Click Photo
+        </label>
+      </div>
+    </ion-card>
+  </div> -->
+
+  <!-- <div class="wrapper">
+    <h1>Beautiful CSS-Only File Inputs</h1>
+    <p>Create beautifully designed, CSS-only, semantic and accessible file upload buttons with the <code>label</code> element.</p>
+  
+    <input type="file" id="file" />
+    <label for="file" />choose a file</label>
+  
+    <input type="file" id="file" />
+    <label for="file" class="btn-1">upload file</label>
+  
+    <input type="file" id="file" />
+    <label for="file" class="btn-2">upload</label>
+  
+    <input type="file" id="file" />
+    <label for="file" class="btn-3">
+      <span>select</span>
+    </label>
+  
+    <p class="footer">by <a href="https://benmarshall.me/">Ben Marshall</a> on <a href="https://benmarshall.me/styling-file-inputs/" target="_blank"><em>Styling File Inputs &mdash; The Besr Way.</em></a></p>
+  </div> -->
+
+
+  <!-- <ion-card class="border-l-2 border-green-400 p-1">
+    <div class="flex justify-between p-2">
+      <div class="flex justify-start">
+        <img src="assets/pcr-test.png" alt="">
+        <ion-label class="text-black pl-3"><b>PCR Test</b> <br>
+        </ion-label>
+      </div>
+      <div>
+        <ion-icon class="text-lg text-green-400" name="cloud-download"></ion-icon>&nbsp;
+        <ion-icon class="text-lg text-red-600" name="cloud-upload"></ion-icon>
+      </div>
+    </div>
+    <div class="flex justify-start pl-5">
+      <div class="p-1 bg-gray-200 rounded-sm">
+        <ion-icon class="text-lg text-green-400" name="cloud-download"></ion-icon>
+      </div>&nbsp;
+      <div class=" p-1 bg-gray-200 rounded-sm">
+        <ion-icon class="text-lg text-red-600" name="cloud-upload"></ion-icon>
+      </div>
+    </div>
+  </ion-card>
+
+  <ion-card class="border-l-2 border-green-400 p-1">
+    <div class="flex justify-between p-2">
+      <div class="flex justify-start">
+        <img src="assets/pcr-test.png" alt="">
+        <ion-label class="text-black pl-3"><b>PCR Test </b> <br>
+        </ion-label>
+      </div>
+      <div>
+        <ion-icon class="text-lg text-green-400" name="cloud-download"></ion-icon>&nbsp;
+        <ion-icon class="text-lg text-red-600" name="cloud-upload"></ion-icon>
+      </div>
+    </div>
+  </ion-card>
+
+  <ion-card class="border-l-2 border-green-400 p-1">
+    <div class="flex justify-between p-2">
+      <div class="flex justify-start">
+        <img src="assets/pcr-testt.png" alt="">
+        <ion-label class="text-black pl-3"><b>Rapid PCR Test</b> <br>
+        </ion-label>
+      </div>
+      <div>
+        <ion-icon class="text-lg text-green-400" name="cloud-download"></ion-icon>&nbsp;
+        <ion-icon class="text-lg text-red-600" name="cloud-upload"></ion-icon>
+      </div>
+    </div>
+  </ion-card>
+
+  <ion-card class="border-l-2 border-green-400 p-1">
+    <div class="flex justify-between p-2">
+      <div class="flex justify-start">
+        <img src="assets/antibody-test.png" alt="">
+        <ion-label class="text-black pl-3"><b>Antibody Test</b> <br>
+        </ion-label>
+      </div>
+      <div>
+        <ion-icon class="text-lg text-green-400" name="cloud-download"></ion-icon>&nbsp;
+        <ion-icon class="text-lg text-red-600" name="cloud-upload"></ion-icon>
+      </div>
+    </div>
+  </ion-card>
+
+  <ion-card class="border-l-2 border-green-400 p-1">
+    <div class="flex justify-between p-2">
+      <div class="flex justify-start">
+        <img src="assets/certification.png" alt="">
+        <ion-label class="text-black pl-3"><b>Vaccination Certificate
+          </b> <br>
+        </ion-label>
+      </div>
+      <div>
+        <ion-icon class="text-lg text-green-400" name="cloud-download"></ion-icon>&nbsp;
+        <ion-icon class="text-lg text-red-600" name="cloud-upload"></ion-icon>
+      </div>
+    </div>
+  </ion-card>
+
+  <ion-card class="border-l-2 border-green-400 p-1">
+    <div class="flex justify-between p-2">
+      <div class="flex justify-start">
+        <img src="assets/other.png" alt="">
+        <ion-label class="text-black pl-3"><b>Others
+          </b> <br>
+        </ion-label>
+      </div>
+      <div>
+        <ion-icon class="text-lg text-green-400" name="cloud-download"></ion-icon>&nbsp;
+        <ion-icon class="text-lg text-red-600" name="cloud-upload"></ion-icon>
+      </div>
+    </div>
+  </ion-card> -->
+</ion-content>

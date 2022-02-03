@@ -1,0 +1,79 @@
+<div class="flex justify-start  p-4" style="background-color: #ffffff;">
+  <div routerLink="/doctordash">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd"
+        d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+        clip-rule="evenodd" />
+    </svg>
+  </div>
+  <div>
+    <ion-title class="text-blue-500 text-center">Edit Profile </ion-title>
+  </div>
+</div>
+
+<ion-content>
+
+  <div align="center">
+
+    <img src="assets/edit-info.png" alt="">
+  </div>
+
+  <form #form_register="ngForm" class="form">
+
+    <div class="col-3 input-effect">
+      <input class="effect-19" type="text" placeholder="Full Name" [(ngModel)]="session_data.name" name="name">
+      <label></label>
+      <span class="focus-border">
+        <i></i>
+      </span>
+      <ion-text class="error_msg" color="danger" *ngIf="name"> This field is required</ion-text>
+
+    </div>
+
+
+
+    <div class="col-3 input-effect">
+      <div class="relative ">
+        <select
+          class="effect-19 block appearance-none w-full border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-400"
+          id="grid-state" [ngModel]="session_data.gender" name="gender">
+          <option disabled>Select Gender </option>
+          <option>Male </option>
+          <option>Female </option>
+          <option>Other</option>
+
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+        </div>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="gender"> Select gender</ion-text>
+
+    </div>
+
+    <div class="col-3 input-effect">
+      <input class="effect-19" type="email" placeholder="Email" [(ngModel)]="session_data.email" name="email">
+      <label></label>
+      <span class="focus-border">
+        <i></i>
+      </span>
+      <ion-text class="error_msg" color="danger" *ngIf="email"> This field is required</ion-text>
+    </div>
+    
+
+    
+
+  </form>
+
+  <div class="pt-6 pl-6 pr-6">
+    <ion-button class="w-full -mt-5" expand="block" color="primary" (click)="update_profile(form_register)">
+      Save Changes
+    </ion-button>
+  </div>
+  <div class="loader" *ngIf="loader_visibility">
+    <svg class="spinner" width="65px" height="65px" viewBox="0 0 50 50">
+      <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+    </svg>
+  </div>
+</ion-content>

@@ -1,0 +1,161 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="pl-3" routerLink="/submitreport">
+      <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+          clip-rule="evenodd" />
+      </svg>
+    </ion-buttons>
+    <ion-title class="text-blue-500 text-base">Submit Report For Vaccine Certificate </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="pl-5 pr-5 mt-4">
+    <div class="relative">
+      <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+        [ngModel]="'Select Doctor'">
+        <option disabled>Select Doctor</option>
+        <option>Dr. Niklesh Joshi</option>
+        <option>Dr. Mayur Wankhade</option>
+        <option>Dr. Kapil Sharma</option>
+        <option>Dr. Bhavana Tale</option>
+      </select>
+      <!-- <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+      </div> -->
+    </div>
+  </div>
+  <div class="pl-5 pr-5 mt-4">
+    <!-- <span class="form-label">Select Doctor Name</span> -->
+    <div class="relative">
+      <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+        [ngModel]="'Select Member'">
+        <option disabled>Select Member</option>
+        <option>Vaibhav Fuke</option>
+        <option>Mayur Wankhade</option>
+        <option>John Wan</option>
+        <option>Diksha Panzade</option>
+      </select>
+      <!-- <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="pl-5 pr-5 mt-4">
+    <span class="form-label">Date of test</span>
+    <div class="border-2 bg-white border-gray-300 p-2 rounded-md">
+      <label for="start"><input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01"
+          max="2018-12-31"></label>
+    </div>
+  </div>
+
+  <div class="pl-5 pr-5 mt-4">
+    <span class="form-label">Date of report issued</span>
+    <div class="border-2 bg-white border-gray-300 p-2 rounded-md">
+      <label for="start"><input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01"
+          max="2018-12-31"></label>
+    </div>
+  </div>
+
+
+  <div class="pl-5 pr-5 mt-4">
+    <!-- <span class="form-label"> Center Name</span> -->
+    <div class="relative">
+      <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+        [ngModel]="'Vaccination Details'">
+        <option disabled>Vaccination Details</option>
+        <option>Partial Vaccinated (1 Dose)</option>
+        <option>Fully Vaccinated (2 Doses)</option>
+        <option>Booster</option>
+      </select>
+      <!-- <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="pl-5 pr-5 mt-4">
+    <!-- <span class="form-label"> Center Name</span> -->
+    <div class="relative">
+      <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+        [ngModel]="'Select Center'">
+        <option disabled>Select Center</option>
+        <option>Center 1</option>
+        <option>Center 2</option>
+        <option>Center 3</option>
+        <option>Center 4</option>
+        <option>Center 5</option>
+      </select>
+      <!-- <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+      </div> -->
+    </div>
+  </div>
+
+  <ion-row class="p-4">
+    <ion-col size="12">
+      <textarea name="" id="" cols="39" rows="5" placeholder="Description (if any)"
+        class="rounded-sm border-2 border-gray-200"></textarea>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="p-4" style="margin-top: -6%;">
+    <label class="pl-2">
+      Prescription (if any)
+    </label>
+  </ion-row>
+
+  <ion-row class="pl-4 pr-4">
+    <ion-col size="6">
+      <div class="bg-white p-2 rounded-sm" align="center">
+        <img src="assets/c1.png" alt="">
+        <ion-label>Camera</ion-label>
+      </div>
+    </ion-col>
+    <ion-col size="6">
+      <div class="bg-white p-2 rounded-sm" align="center">
+        <img src="assets/g1.png" alt="">
+        <ion-label>Image</ion-label>
+      </div>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row class="p-4 pt-3">
+    <label class="pl-2">
+      Upload Your Report
+    </label>
+  </ion-row>
+
+  <ion-row class="pl-4 pr-4 pt-1">
+    <ion-col size="6">
+      <div class="bg-white p-2 rounded-sm" align="center">
+        <img src="assets/c1.png" alt="">
+        <ion-label>Camera</ion-label>
+      </div>
+    </ion-col>
+    <ion-col size="6">
+      <div class="bg-white p-2 rounded-sm" align="center">
+        <img src="assets/g1.png" alt="">
+        <ion-label>Image</ion-label>
+      </div>
+    </ion-col>
+  </ion-row>
+
+
+  <div class=" p-4 pl-5 pr-5" style="margin-top: 2%;">
+    <button expand="block" class="btn-3 w-full p-2 text-white rounded-sm">
+      Sumbit Report <ion-icon class="shake-horizontal ml-3" color="light" slot="end" name="arrow-forward-outline">
+      </ion-icon>
+    </button>
+  </div>
+
+</ion-content>

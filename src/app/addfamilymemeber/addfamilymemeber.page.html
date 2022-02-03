@@ -1,0 +1,136 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="pl-3" routerLink="/familymember">
+      <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+          clip-rule="evenodd" />
+      </svg>
+    </ion-buttons>
+    <ion-title class="text-blue-500 text-base"> Add Family Member </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <div routerLink="/dashboard" class="pt-5 pl-5">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd"
+        d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+        clip-rule="evenodd" />
+    </svg>
+  </div> -->
+
+
+  <form #form_register="ngForm" class="form">
+
+  <div class="image_container text-center">
+    <label class="fa_icon_span" for="file-input" (click)="selectImage()">
+      <ion-icon name="camera-outline" class="faicon"></ion-icon>
+    </label>
+    <img src="{{img_url}}" id="profile_img" alt="" (click)="selectImage()">
+
+  </div>
+
+  <ion-row class="p-4">
+
+
+    <ion-col size="12">
+      <div class=" mt-4">
+        <div class="relative">
+          <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+            [ngModel]="doctor_id" name="doctor_id">
+            <option disabled selected>Select Doctor</option>
+            <option *ngFor="let n of doctor_list;let i=index" value="{{n.id}}" selected>{{n.f_name}} </option>
+    
+          </select>
+          <!-- <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+          </div> -->
+        </div>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="doctor_id_err"> Select doctor.</ion-text>
+
+    </ion-col>
+
+    <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300 rounded-sm">
+        <ion-input type="text" placeholder="First Name" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'');"
+          ngModel name="f_name"></ion-input>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="f_name"> This field is required.</ion-text>
+
+    </ion-col>
+
+    <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300 rounded-sm">
+        <ion-input type="text" placeholder="Last Name" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'');"
+          ngModel name="l_name"></ion-input>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="l_name"> This field is required.</ion-text>
+
+    </ion-col>
+
+    <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300 rounded-sm">
+        <ion-input placeholder="Age" type="number" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" ngModel name="age">
+        </ion-input>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="age"> This field is required.</ion-text>
+
+    </ion-col>
+
+    <ion-col size="12">
+      <div class="relative">
+        <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+          [ngModel]="gender" name="gender">
+          <option disabled>Select Gender</option>
+          <option>Female</option>
+          <option>Male</option>
+          <option>Other</option>
+        </select>
+
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="gender_err"> Select gender.</ion-text>
+
+    </ion-col>
+
+    <ion-col size="12">
+      <div class="bg-white border-2 border-gray-300">
+        <div class="relative">
+          <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+            [ngModel]="relation" name="relation">
+            <option disabled>Relation With Patient</option>
+            <option>Father</option>
+            <option>Mother</option>
+            <option>Husband</option>
+            <option>Wife</option>
+            <option>Son</option>
+            <option>Daughter</option>
+            <option>Other</option>
+          </select>
+          <!-- <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+          </div> -->
+        </div>
+      </div>
+      <ion-text class="error_msg" color="danger" *ngIf="relation_err"> Select relation.</ion-text>
+
+    </ion-col>
+
+  </ion-row>
+
+  <div class=" p-4 pt-2 pl-6 pr-6">
+    <button expand="block" class="btn-3 w-full p-2 text-white rounded-sm" (click)="add_member(form_register)">
+      Add Family Member <ion-icon class="shake-horizontal ml-3" color="light" slot="end" name="arrow-forward-outline">
+      </ion-icon>
+    </button>
+  </div>
+</form>
+
+<div class="loader" *ngIf="loader_visibility">
+  <svg class="spinner" width="65px" height="65px" viewBox="0 0 50 50">
+    <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+  </svg>
+</div>
+</ion-content>
