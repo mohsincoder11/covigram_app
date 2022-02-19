@@ -81,6 +81,10 @@ export class ViewtotalregisterPage implements OnInit {
     $("#reportpage_modal1").addClass("show");
   }
 
+
+
+  //asdfsdf
+
   downloadfile(type) {
     let current_id = this.current_id;
     let filename = this.all_report.filter(function (e) {
@@ -94,7 +98,7 @@ export class ViewtotalregisterPage implements OnInit {
       filename = filename[0]['report_file'];
     }
     if(this.platform.is('ios')){
-      
+
     }
    window.open(this.url.baseUrl + 'download_report_file/' + filename, "_system");
 
