@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { UrlService } from "../services/url/url.service";
 import { ToasterService } from "../services/toaster/toaster.service";
 import { Router, ActivatedRoute } from '@angular/router';
+import { Platform } from '@ionic/angular';
 @Component({
   selector: 'app-viewtotalregister',
   templateUrl: './viewtotalregister.page.html',
@@ -27,6 +28,7 @@ export class ViewtotalregisterPage implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public storage: Storage,
+    public platform:Platform,
     public http: HttpClient,
     public url: UrlService,
     public toaster: ToasterService,
@@ -91,7 +93,11 @@ export class ViewtotalregisterPage implements OnInit {
     else {
       filename = filename[0]['report_file'];
     }
-    window.open(this.url.baseUrl + 'download_report_file/' + filename, "_system");
+    if(this.platform.is('ios')){
+      
+    }
+   window.open(this.url.baseUrl + 'download_report_file/' + filename, "_system");
+
   }
 
   get_total_patient_api(patient_id, doctor_id) {
