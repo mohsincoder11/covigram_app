@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 })
 export class ToasterService {
   forgot_by=1;
+  doctor_backurl;
   common_doctor_list;
   common_test_type_list;
   common_center_list;
@@ -18,7 +19,7 @@ export class ToasterService {
       toast: true,
       position: 'bottom',
       showConfirmButton: false,
-      timer: 2000,
+      timer: 3500,
       customClass: {
         popup: 'colored-toast'
       },

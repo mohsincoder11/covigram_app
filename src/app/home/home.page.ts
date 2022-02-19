@@ -10,7 +10,7 @@ import { Platform, AlertController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  type = 'patient'
+  type = 'patient';
   constructor(
     public router: Router,
     public menuCtrl: MenuController,
@@ -18,8 +18,8 @@ export class HomePage {
     private _location: Location,
     private platform: Platform,
   ) { }
+
   submit() {
-    console.log(this.type);
     if (this.type == 'patient') {
       this.router.navigate(['/login'])
     } else {

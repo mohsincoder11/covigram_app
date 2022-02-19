@@ -1,0 +1,159 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="pl-3" routerLink="/totalregister">
+      <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+          clip-rule="evenodd" />
+      </svg>
+    </ion-buttons>
+    <ion-title class="text-blue-500 text-base">Reports of {{patient_name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-row class="upload_report_label">
+    <button routerLink="/reportform/{{patient_id}}">Upload Report <ion-icon name="arrow-up-outline">
+    </ion-icon> </button>
+  </ion-row>
+
+  <ion-card class="bg-white" *ngFor="let ar of all_report;">
+    <div class="flex justify-between" align="center">
+      <div style="background-color: #6FC8B6;" class="rounded-br-lg  h-6">
+        <p class="text-white text-xs p-1">Date: 12/07/2021</p>
+      </div>
+    </div>
+
+    <ion-grid fixed>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-label style="font-size: 0.8em;"><span class="text-black ">Report Name :</span> {{ar.test_name}}
+          </ion-label>
+        </ion-col>
+        <ion-col size="6">
+          <ion-label style="font-size: 0.8em;"><span class="text-black ">Center Name :</span> Center {{ar.center_id}}
+          </ion-label>
+        </ion-col>
+        <ion-col size="6">
+          <ion-label style="font-size: 0.8em;"><span class="text-black ">Date of test :</span> {{ar.test_date}}
+          </ion-label>
+        </ion-col>
+        <ion-col size="6">
+          <ion-label style="font-size: 0.8em;"><span class="text-black ">Date of Issue :</span> {{ar.issue_date}}
+          </ion-label>
+        </ion-col>
+
+
+      </ion-row>
+
+      <ion-row style="border-top: 1px solid rgb(187, 187, 187); margin-bottom: 5px;">
+        <ion-col size="4" style=" margin-top: 5px;">
+          <button
+            style="font-size: 0.7em; border: 1px solid #6FC8B6; padding: 5px; border-radius: 5px; color: #30a18b; width: 100%;"
+            expand="block" [disabled]="ar.description==null" (click)=" Descriptionpage_modal(ar.id,ar.description)">
+            Description
+          </button>
+        </ion-col>
+        <ion-col size="4" style=" margin-top: 5px;">
+          <button
+            style="font-size: 0.7em; border: 1px solid #6FC8B6; padding: 5px; border-radius: 5px; color: #30a18b; width: 100%;"
+            expand="block" [disabled]="ar.prescription_file==null"
+            (click)="Prescriptionpage_modal(ar.id,ar.prescription_file)">
+            Prescription
+          </button>
+        </ion-col>
+        <ion-col size="4" style=" margin-top: 5px;">
+          <button
+            style="font-size: 0.7em; border: 1px solid #6FC8B6; padding: 5px; border-radius: 5px; color: #30a18b; width: 100%;"
+            expand="block" [disabled]="ar.report_file==null" (click)="Reportpage_modal(ar.id,ar.report_file)">
+            Report
+          </button>
+        </ion-col>
+
+      </ion-row>
+
+      <span *ngIf="ar.upload_by==2">
+        <ion-row class="report_card_bottom_row">
+          <ion-col size="12" style=" margin-top: 5px;" (click)="delete_report(ar.id,ar.prescription_file,ar.report_file)">
+            <span>
+              <button class="danger">
+                Delete Report <ion-icon name="trash">
+                </ion-icon>
+              </button>
+            </span>
+          </ion-col>
+        </ion-row>
+      </span>
+
+    </ion-grid>
+  </ion-card>
+
+
+
+
+  <div class="custom_modal" id="prescriptionpage_modal1">
+    <ion-row class="icon_row" (click)="close_modal()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-row>
+    <form #queryform="ngForm" class="form pl- pr-2">
+      <ion-row class="pb-3 pl-2">
+        <div align="center" class="modal">
+          <img src="{{prescription_file}}" alt="" class="upload_file">
+        </div>
+      </ion-row>
+      <button expand="block" class="btn-3 w-full p-2 text-white rounded-sm" (click)="downloadfile('prescription')">
+        Download
+      </button>
+    </form>
+  </div>
+
+
+
+  <div class="custom_modal" id="reportpage_modal1">
+    <ion-row class="icon_row" (click)="close_modal()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-row>
+    <form #queryform="ngForm" class="form pl-2 pr-2">
+      <ion-row class="pb-3 pl-2">
+        <div align="center" class="modal">
+          <img src="{{report_file}}" alt="" class="upload_file">
+        </div>
+      </ion-row>
+      <button expand="block" class="btn-3 w-full p-2 text-white rounded-sm" (click)="downloadfile('report')">Download
+      </button>
+    </form>
+  </div>
+
+
+  <div class="custom_modal" id="descriptionpage_modal1">
+    <ion-row class="icon_row" (click)="close_modal()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-row>
+    <form #queryform="ngForm" class="form">
+      <ion-row>
+        <ion-label>Description Uploaded By User</ion-label>
+        <p style="font-size: small; margin-top: 20px;">{{description}} </p>
+      </ion-row>
+    </form>
+    <Div style="margin-top: 10px;">
+      <button expand="block" class="btn-3 w-full p-2 text-white rounded-sm" (click)="close_modal()">OK
+      </button>
+    </Div>
+  </div>
+
+
+  <div class="no_report_found" *ngIf="no_report">
+    <ion-text>No report found.</ion-text>
+  </div>
+
+  <div class="loader" *ngIf="loader_visibility">
+    <svg class="spinner" width="65px" height="65px" viewBox="0 0 50 50">
+      <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+    </svg>
+  </div>
+
+
+</ion-content>

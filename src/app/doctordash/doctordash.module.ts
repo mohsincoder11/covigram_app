@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DoctordashPageRoutingModule } from './doctordash-routing.module';
 
 import { DoctordashPage } from './doctordash.page';
+import { FooterdoctorPageModule } from '../footerdoctor/footerdoctor.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DoctordashPageRoutingModule
+    DoctordashPageRoutingModule,
+    FooterdoctorPageModule
   ],
   declarations: [DoctordashPage]
 })

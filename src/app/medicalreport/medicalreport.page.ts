@@ -47,7 +47,7 @@ export class MedicalreportPage implements OnInit {
       .get(`${this.url.serverUrl}get_medical_report?patient_id=${id}`)
       .subscribe(
         (res) => {
-        
+        console.log(res);
           this.report_list=res;
           this.report_list.length == 0 ? this.no_report = true : this.no_report = false;
           this.loader_visibility = false;

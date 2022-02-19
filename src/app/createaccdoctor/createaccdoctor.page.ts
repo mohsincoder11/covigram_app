@@ -11,21 +11,22 @@ import { ToasterService } from "../services/toaster/toaster.service";
   styleUrls: ['./createaccdoctor.page.scss'],
 })
 export class CreateaccdoctorPage implements OnInit {
-  password: boolean = false;
-  name: boolean = false;
-  gender: boolean = false;
-  email: boolean = false;
+  f_name: boolean = false;
+  l_name: boolean = false;
+  email_username: boolean = false;
+  email_username_exist: boolean = false;
   mobile: boolean = false;
   mobile_length: boolean = false;
   mobile_no_exist: boolean = false;
+  password: boolean = false;
+  gender: boolean = false;
   specialization: boolean = false;
-  licence_no: boolean = false;
+  state_licence_no: boolean = false;
   npi_no: boolean = false;
   covid_lab_reg: boolean = false;
   office_address: boolean = false;
   work_phone: boolean = false;
   fax_no: boolean = false;
-  username: boolean = false;
 
 
   loader_visibility: boolean = false;
@@ -43,28 +44,29 @@ export class CreateaccdoctorPage implements OnInit {
   }
 
   confirm_mobile(formdata: NgForm) {
+    formdata.value.f_name ? this.f_name = false : this.f_name = true;
+    formdata.value.l_name ? this.l_name = false : this.l_name = true;
+    formdata.value.mobile.toString().length == 10 ? this.mobile_length = false : this.mobile_length = true;
+    formdata.value.email_username ? this.email_username = false : this.email_username = true;
+    formdata.value.password ? this.password = false : this.password = true;
+    formdata.value.gender ? this.gender = false : this.gender = true;
+    formdata.value.gender != 'Select Gender' ? this.gender = false : this.gender = true;
+
     formdata.value.specialization ? this.specialization = false : this.specialization = true;
-    formdata.value.licence_no ? this.licence_no = false : this.licence_no = true;
+    formdata.value.state_licence_no ? this.state_licence_no = false : this.state_licence_no = true;
     formdata.value.npi_no ? this.npi_no = false : this.npi_no = true;
     formdata.value.covid_lab_reg ? this.covid_lab_reg = false : this.covid_lab_reg = true;
     formdata.value.office_address ? this.office_address = false : this.office_address = true;
     formdata.value.work_phone ? this.work_phone = false : this.work_phone = true;
     formdata.value.fax_no ? this.fax_no = false : this.fax_no = true;
-    formdata.value.username ? this.username = false : this.username = true;
 
-    formdata.value.password ? this.password = false : this.password = true;
-    formdata.value.gender ? this.gender = false : this.gender = true;
-    formdata.value.gender != 'Select Gender' ? this.gender = false : this.gender = true;
-    formdata.value.name ? this.name = false : this.name = true;
-    formdata.value.email ? this.email = false : this.email = true;
-    formdata.value.mobile.toString().length == 10 ? this.mobile_length = false : this.mobile_length = true;
-    formdata.value.otp = 1234;
+    formdata.value.otp = 1111;
 
-    if (formdata.value.specialization && formdata.value.gender && formdata.value.gender != 'Select Gender' && formdata.value.username && formdata.value.licence_no && formdata.value.npi_no && formdata.value.covid_lab_reg && formdata.value.office_address && formdata.value.work_phone && formdata.value.fax_no && formdata.value.password && formdata.value.name && !this.mobile_no_exist &&
-      formdata.value.mobile && formdata.value.mobile.toString().length == 10) {
+    if (formdata.value.f_name && formdata.value.l_name && formdata.value.email_username && !this.email_username_exist && !this.mobile_no_exist &&
+      formdata.value.mobile && formdata.value.mobile.toString().length == 10 && formdata.value.password && formdata.value.gender && formdata.value.gender != 'Select Gender' && formdata.value.specialization && formdata.value.state_licence_no && formdata.value.npi_no && formdata.value.covid_lab_reg && formdata.value.office_address && formdata.value.work_phone && formdata.value.fax_no) {
       this.loader_visibility = true;
       this.mobile_length = false;
-
+      console.log(formdata.value);
       this.http
         .post(`${this.url.serverUrl}send_mobile_verify_otp`, formdata.value)
         .subscribe(
@@ -105,6 +107,23 @@ export class CreateaccdoctorPage implements OnInit {
           (err) => console.log(err)
         );
     }
+  }
+
+  check_email_username_Exist(ev) {
+    this.loader_visibility = true;
+    this.http.get(`${this.url.serverUrl}check_existing_email_username?email_username=${ev.target.value}`)
+      .subscribe(
+        (res) => {
+          this.loader_visibility = false;
+          if (res == 1) {
+            this.email_username_exist = true;
+          }
+          else {
+            this.email_username_exist = false;
+          }
+        },
+        (err) => console.log(err)
+      );
   }
 
 }

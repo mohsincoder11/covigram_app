@@ -37,9 +37,7 @@ export class UploadreportPage implements OnInit {
   patient_id;
   patient_name;
   isLoading = false;
-  croppedImagepath = null;
   prescription_image = null;
-  croppedImagepath2 = null;
   report_file = null;
   imagePickerOptions = {
     maximumImagesCount: 1,
@@ -47,6 +45,10 @@ export class UploadreportPage implements OnInit {
   };
   prescription_image_ext;
   report_file_ext;
+  prescription_camera = 'assets/c1.png';
+  prescription_file = 'assets/g1.png';
+  report_camera_preview = 'assets/c1.png';
+  report_file_preview = 'assets/g1.png';
   constructor(
     private camera: Camera,
     public actionSheetController: ActionSheetController,
@@ -64,7 +66,9 @@ export class UploadreportPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.vaccine_detail='Vaccination Details';
+    this.reset_preview('prescription');
+    this.reset_preview('report');
+  this.vaccine_detail = 'Vaccination Details';
     this.doctor_id = 'Select Doctor';
     this.center_id = 'Select Center';
     this.doctor_list = this.toaster.common_doctor_list;
@@ -99,7 +103,7 @@ export class UploadreportPage implements OnInit {
     }
     if (this.test_id == 5) {
       formdata.value.vaccine_detail ? this.vaccine_detail_err = false : this.vaccine_detail_err = true;
-      formdata.value.vaccine_detail !='Vaccination Details' ? this.vaccine_detail_err = false : this.vaccine_detail_err = true;
+      formdata.value.vaccine_detail != 'Vaccination Details' ? this.vaccine_detail_err = false : this.vaccine_detail_err = true;
     }
     if (formdata.value.doctor_id && formdata.value.doctor_id != 'Select Doctor' && formdata.value.test_date && formdata.value.issue_date && formdata.value.center_id && formdata.value.center_id != 'Select Center') {
       this.loader_visibility = true;
@@ -117,6 +121,7 @@ export class UploadreportPage implements OnInit {
       f_data.append('ext1', 'jpg');
       f_data.append('report', this.report_file);
       f_data.append('ext2', 'jpg');
+      f_data.append('upload_by', '1');
 
 
       this.http
@@ -136,7 +141,15 @@ export class UploadreportPage implements OnInit {
     }
   }
 
-  pickImage(sourceType) {
+
+  async selectImage(type) {
+    if (type == 'camera')
+      this.pickImage(this.camera.PictureSourceType.CAMERA, 1);
+    else
+      this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY, 2);
+  }
+
+  pickImage(sourceType, type) {
     const options: CameraOptions = {
       quality: 100,
       sourceType: sourceType,
@@ -146,15 +159,27 @@ export class UploadreportPage implements OnInit {
     }
     this.camera.getPicture(options).then((imageData) => {
       this.prescription_image = imageData;
-      this.croppedImagepath = 'data:image/jpeg;base64,' + imageData;
-
+      this.reset_preview('prescription');
+      if (type == 1)
+        this.prescription_camera = 'data:image/jpeg;base64,' + imageData;
+      else
+        this.prescription_file = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
       this.toaster.toaster_show('Error. Please try after some time.', 'error', 'white');
 
     });
   }
 
-  pickImage2(sourceType) {
+
+
+  async selectImage2(type) {
+    if (type == 'camera')
+      this.pickImage2(this.camera.PictureSourceType.CAMERA, 1);
+    else
+      this.pickImage2(this.camera.PictureSourceType.PHOTOLIBRARY, 2);
+  }
+
+  pickImage2(sourceType, type) {
     const options: CameraOptions = {
       quality: 100,
       sourceType: sourceType,
@@ -164,7 +189,11 @@ export class UploadreportPage implements OnInit {
     }
     this.camera.getPicture(options).then((imageData) => {
       this.report_file = imageData;
-      this.croppedImagepath2 = 'data:image/jpeg;base64,' + imageData;
+      this.reset_preview('report');
+      if (type == 1)
+        this.report_camera_preview = 'data:image/jpeg;base64,' + imageData;
+      else
+        this.report_file_preview = 'data:image/jpeg;base64,' + imageData;
 
     }, (err) => {
       this.toaster.toaster_show('Error. Please try after some time.', 'error', 'white');
@@ -172,18 +201,14 @@ export class UploadreportPage implements OnInit {
     });
   }
 
-  async selectImage(type) {
-    if (type == 'camera')
-      this.pickImage(this.camera.PictureSourceType.CAMERA);
-    else
-      this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+  reset_preview(reset_for) {
+    if (reset_for == 'report') {
+      this.report_camera_preview = 'assets/c1.png';
+      this.report_file_preview = 'assets/g1.png';
+    }
+    else {
+      this.prescription_camera = 'assets/c1.png';
+      this.prescription_file = 'assets/g1.png';
+    }
   }
-
-  async selectImage2(type) {
-    if (type == 'camera')
-      this.pickImage2(this.camera.PictureSourceType.CAMERA);
-    else
-      this.pickImage2(this.camera.PictureSourceType.PHOTOLIBRARY);
-  }
-
 }

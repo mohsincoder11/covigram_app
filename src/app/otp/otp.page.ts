@@ -5,7 +5,7 @@ import { UrlService } from "../services/url/url.service";
 import { ToasterService } from "../services/toaster/toaster.service";
 import { NgForm } from '@angular/forms';
 
-//declare var $: any;
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-otp',
@@ -19,6 +19,10 @@ export class OtpPage implements OnInit {
   otp_error: boolean = false;
   loader_visibility: boolean = false;
   back_url = 'createacc';
+
+  time;
+  resend_click: boolean = false;
+
   constructor(
     private router: Router,
     public activatedRoute: ActivatedRoute,
@@ -34,7 +38,8 @@ export class OtpPage implements OnInit {
           this.back_url = 'createaccdoctor';
         this.mobile_no = this.regUserData.mobile;
         this.otp = this.regUserData.otp;
-
+        this.starttimer();
+        console.log(this.regUserData);
       }
     });
   }
@@ -42,27 +47,28 @@ export class OtpPage implements OnInit {
   ngOnInit() {
   }
 
-  // focusnext(event) {
-  //   this.otp_error = false;
-  //   if (event.target.value.length > 0) {
-  //     $('#' + event.target.id).addClass('focus_class');
-  //     if (event.target.id == 4) {
-  //       this.verify_otp();
-  //     }
-  //     else {
-  //       let movenext = +parseInt(event.target.id) + 1;
-  //       document.getElementById('' + movenext).focus();
-  //     }
-  //   }
-  //   else {
-  //     $('#' + event.target.id).removeClass('focus_class');
-  //   }
-  // }
+  focusnext(event) {
+    this.otp_error = false;
+    if (event.target.value.length > 0) {
+      $('#' + event.target.id).addClass('focus_class');
+      if (event.target.id == 4) {
+        this.verify_otp();
+      }
+      else {
+        let movenext = +parseInt(event.target.id) + 1;
+        $("#" + movenext).val('');
+        document.getElementById('' + movenext).focus();
+      }
+    }
+    else {
+      $('#' + event.target.id).removeClass('focus_class');
+    }
+  }
 
-  verify_otp(formdata: NgForm) {
-    if (formdata.value.otp) {
-    
-      if (this.otp == formdata.value.otp) {
+  verify_otp() {
+    if ($("#1").val() && $("#2").val() && $("#3").val() && $("#4").val()) {
+      let input_otp = $("#1").val().toString() + $("#2").val().toString() + $("#3").val().toString() + $("#4").val().toString();
+      if (this.otp == input_otp) {
         let custome_url = 'user_registration';
         if (this.regUserData.user_type == 2)
           custome_url = 'doctor_registration';
@@ -73,7 +79,7 @@ export class OtpPage implements OnInit {
             (res) => {
               this.loader_visibility = false;
               if (res > 0) {
-                this.toaster.toaster_show('Account created successfully.', 'success', 'white');
+                this.toaster.toaster_show('Account created successfully. Wait sometime for admim approval', 'success', 'white');
                 if (this.regUserData.user_type == 2)
                   this.router.navigate(['/doctorlogin']);
                 else
@@ -101,4 +107,35 @@ export class OtpPage implements OnInit {
     }
   }
 
+
+
+  resend_otp() {
+    console.log(this.regUserData.mobile);
+    this.starttimer();
+    this.loader_visibility = true;
+    this.http
+      .post(`${this.url.serverUrl}forgot_password`, this.regUserData.mobile)
+      .subscribe(
+        (res) => {
+          this.otp = res;
+          this.loader_visibility = false;
+          this.toaster.toaster_show('OTP sent successfully.', 'success', 'white');
+        },
+        (err) => {
+          this.loader_visibility = false;
+          this.toaster.toaster_show('Server Error. Please try after some time.', 'error', 'white');
+        }
+      );
+  }
+  starttimer() {
+    this.time = '59';
+    var a = setInterval(() => {
+      if (this.time > 0)
+        this.time = String(this.time - 1).padStart(2, "0");
+      else {
+        this.resend_click = true;
+        clearInterval(a);
+      }
+    }, 1000)
+  }
 }

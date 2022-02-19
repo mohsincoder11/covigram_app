@@ -105,7 +105,7 @@ const routes: Routes = [
     loadChildren: () => import('./privacypolicy/privacypolicy.module').then(m => m.PrivacypolicyPageModule)
   },
   {
-    path: 'reportform',
+    path: 'reportform/:patient_id',
     loadChildren: () => import('./reportform/reportform.module').then(m => m.ReportformPageModule)
   },
   {
@@ -180,6 +180,27 @@ const routes: Routes = [
     path: 'feedback',
     loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
   },
+  {
+    path: 'footerdoctor',
+    loadChildren: () => import('./footerdoctor/footerdoctor.module').then( m => m.FooterdoctorPageModule)
+  },
+  {
+    path: 'editdoctor',
+    loadChildren: () => import('./editdoctor/editdoctor.module').then( m => m.EditdoctorPageModule)
+  },
+  {
+    path: 'viewtodayreport/:patient_id',
+    loadChildren: () => import('./viewtodayreport/viewtodayreport.module').then( m => m.ViewtodayreportPageModule)
+  },
+  {
+    path: 'viewreport/:patient_id',
+    loadChildren: () => import('./viewreport/viewreport.module').then( m => m.ViewreportPageModule)
+  },
+  {
+    path: 'viewtotalregister/:patient_id',
+    loadChildren: () => import('./viewtotalregister/viewtotalregister.module').then( m => m.ViewtotalregisterPageModule)
+  },
+ 
 ];
 
 @NgModule({

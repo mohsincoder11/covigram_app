@@ -39,11 +39,14 @@ export class ForgotPage implements OnInit {
   send_otp(formdata: NgForm) {
     formdata.value.mobile.toString().length == 10 ? this.mobile_length = false : this.mobile_length = true;
     if (formdata.value.mobile.toString().length == 10) {
+      formdata.value.u_type=this.toaster.forgot_by;
+      console.log(formdata.value);
       this.loader_visibility = true;
       this.http
         .post(`${this.url.serverUrl}forgot_password`, formdata.value)
         .subscribe(
           (res) => {
+          
             this.loader_visibility = false;
             if (res == 0) {
               this.toaster.toaster_show('This mobile number is not registered with us', 'error', 'white');

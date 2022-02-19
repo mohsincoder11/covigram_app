@@ -1,3 +1,9 @@
 .footer_div {
   background: linear-gradient(90deg, #4BE3C1, #1E9EEB);
 }
+img {
+  border-radius: 50%;
+  height:9vh;
+  width:9vh;
+  border: 1px solid var(--ion-color-medium2);
+}

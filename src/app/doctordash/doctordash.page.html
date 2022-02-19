@@ -1,5 +1,5 @@
 <ion-row style="margin-top: 1vh;">
-  <ion-col size="2">
+  <!-- <ion-col size="2">
     <div>
       <ion-menu-button>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24"
@@ -8,35 +8,28 @@
         </svg>
       </ion-menu-button>
     </div>
-  </ion-col>
-
-  <ion-col size="8">
-    <div align="center">
-      <img class="pr-5" src="assets/civigram_logo.png" alt="" width="50%" height="50%">
-    </div>
-  </ion-col>
-  <!-- <ion-col size="2">
-    <div>
-      <img src="assets/man.png" alt="" width="50%" height="50%">
-    </div>
   </ion-col> -->
+  <ion-col size="10">
+    <div align="left">
+      <ion-label class="pl-2" style="color: #297CB0;">COVI<span style="color: #6FC8B6;">GRAM</span></ion-label>
+    </div>
+  </ion-col>
+  <ion-col size="2">
+    <div routerLink="/profile">
+      <img src="{{img_url}}" alt="" class="profile_img">
+    </div>
+  </ion-col>
 </ion-row>
 
 
 <ion-content>
-
   <div class="pl-1 pr-1">
     <ion-card>
-      <ion-slides #slider loop="true" pager="true" [options]="slideOptions" (ionSlideTouchEnd)="slideChanged()">
-        <ion-slide>
-          <img src="assets/s2.png" alt="">
-        </ion-slide>
+      <ion-slides #slider loop="true" pager="true" [options]="slideOptions">
+      
         <ion-slide>
           <img src="assets/s1.png" alt="">
         </ion-slide>
-        <!-- <ion-slide>
-          <img src="assets/s3.jpg" alt="">
-        </ion-slide> -->
       </ion-slides>
     </ion-card>
   </div>
@@ -44,23 +37,53 @@
   <ion-grid fixed class="pl-2 pr-2">
     <ion-row>
       <ion-col size="6">
-        <div class="flex justify-between card-2 p-4 rounded-lg shadow-lg" routerLink="/todayapp">
-          <div>
-            <img src="assets/doctor15.png" alt="">
-          </div>
-          <div>
-            <ion-label class="text-sm text-white"><b>New<br>Patients</b></ion-label>
-          </div>
-          <div>
-            <ion-label class="text-white"><b>01</b></ion-label>
-          </div>
+        <div class=" bg-white p-4 rounded-sm" routerLink="/todayapp">
+          <ion-row>
+            <ion-col size="8">
+              <img src="assets/doctor15.png" alt="">
+            </ion-col>
+            <ion-col size="4">
+              <div class="bg-blue-500 rounded-sm" align="center">
+                <ion-label class="text-white">{{today_new_count}}</ion-label>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <div align="center">
+                <ion-label class="text-sm text-black">New Patients</ion-label>
+              </div>
+            </ion-col>
+          </ion-row>
         </div>
       </ion-col>
 
       <ion-col size="6">
-        <div class="flex justify-between card-3 p-4 rounded-lg shadow-lg" routerLink="/totalregister">
+        <div class=" bg-white p-4 rounded-sm" routerLink="/totalregister">
+          <ion-row>
+            <ion-col size="8">
+              <img src="assets/patient15.png" alt="">
+            </ion-col>
+            <ion-col size="4">
+              <div class="bg-blue-500 rounded-sm" align="center">
+                <ion-label class="text-white">{{total_patient_count}}</ion-label>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <div align="center">
+                <ion-label class="text-sm text-black">Total Patients</ion-label>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+
+      <!-- <ion-col size="6">
+        <div class="flex justify-between p-4 rounded-lg shadow-lg" routerLink="/totalregister">
           <div>
-            <img src="assets/patient15.png" alt="" >
+            <img src="assets/patient15.png" alt="">
           </div>
           <div>
             <ion-label class="text-sm text-white"><b>Total<br>Patient</b></ion-label>
@@ -69,33 +92,21 @@
             <ion-label class="text-white"><b>05</b></ion-label>
           </div>
         </div>
-      </ion-col>
-
-      <!-- <ion-col size="6">
-        <div class="flex justify-between card-3 p-4 rounded-lg shadow-lg" routerLink="/totalregister">
-          <div>
-            <img src="assets/medical-history.png" alt="">
-          </div>
-          <div>
-            <ion-label class="text-sm text-white"><b>Total <br>RegisterPatient</b></ion-label>
-          </div>
-          <div>
-            <ion-label><b>05</b></ion-label>
-          </div>
-        </div>
       </ion-col> -->
     </ion-row>
   </ion-grid>
 
-  <ion-card class="p-5 bg-white">
+
+
+  <!-- <ion-card class="p-5 bg-white">
     <img src="assets/power-bi-line.png" alt="">
-  </ion-card>
+  </ion-card> -->
 
 </ion-content>
+<app-footerdoctor></app-footerdoctor>
 
 
-
-<div class="flex justify-between  rounded-tr-3xl  rounded-tl-3xl  shadow-2xl footer_div">
+<!-- <div class="flex justify-between  rounded-tr-3xl  rounded-tl-3xl  shadow-2xl footer_div">
   <div class="pl-4">
     <ion-tab-button tab="music" routerLink="/doctordash">
       <ion-label><b>Home</b></ion-label>
@@ -124,4 +135,4 @@
     </ion-tab-button>
   </div>
 
-</div>
+</div> -->

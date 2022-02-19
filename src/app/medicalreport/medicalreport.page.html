@@ -71,8 +71,8 @@
         <ion-label><span class="text-black font-bold">Report
             Name :</span> {{r.test_name}}</ion-label>
       </ion-col>
-      <ion-col size="6">
-        <ion-label><span class="text-black font-bold" (click)="download_file(r.id)">Prescription
+      <ion-col size="6" *ngIf="r.prescription_file">
+        <ion-label (click)="download_file(r.id)"><span class="text-black font-bold">Prescription
             Note:</span> &nbsp;
           <ion-icon class="text-lg text-red-600" name="cloud-download"></ion-icon>
         </ion-label>

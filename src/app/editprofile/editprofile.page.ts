@@ -43,6 +43,7 @@ export class EditprofilePage implements OnInit {
   loader_visibility: boolean = false;
   img_url;
   image = null;
+  exist_image;
 
   constructor(
     public storage: Storage,
@@ -71,6 +72,7 @@ export class EditprofilePage implements OnInit {
       this.session_data.id = res.id;
       this.session_data.doctor_id = res.doctor_id;
       this.loader_visibility = false;
+      this.exist_image = res.image;
       this.img_url = this.url.imageurl + 'profile/' + res.image;
 
     })
@@ -84,7 +86,7 @@ export class EditprofilePage implements OnInit {
     formdata.value.age ? this.age = false : this.age = true;
     formdata.value.gender ? this.gender = false : this.gender = true;
     formdata.value.gender != 'Select Gender' ? this.gender = false : this.gender = true;
-    formdata.value.mobile.toString().length == 10 ? this.mobile_length = false : this.mobile_length = true;
+    String(formdata.value.mobile).length == 10 ? this.mobile_length = false : this.mobile_length = true;
     formdata.value.state ? this.state = false : this.state = true;
     formdata.value.country ? this.country = false : this.country = true;
     if (formdata.value.f_name && formdata.value.l_name && formdata.value.age && formdata.value.gender && formdata.value.gender != 'Select Gender' && formdata.value.email_username && !this.email_username_exist && formdata.value.state && formdata.value.country && !this.mobile_no_exist &&
@@ -96,10 +98,11 @@ export class EditprofilePage implements OnInit {
       f_data.append('gender', formdata.value.gender);
       f_data.append('age', formdata.value.age);
       f_data.append('email_username', formdata.value.email_username);
-      f_data.append('gender', formdata.value.gender);
       f_data.append('state', formdata.value.state);
       f_data.append('country', formdata.value.country);
+      f_data.append('mobile', formdata.value.mobile);
       f_data.append('image', this.image);
+      f_data.append('exist_image', this.exist_image);
 
       this.loader_visibility = true;
       this.http
@@ -165,12 +168,11 @@ export class EditprofilePage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
     }
     this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
       this.image = imageData;
-      //    this.croppedImagepath = 'data:image/jpeg;base64,' + imageData;
+      this.img_url = 'data:image/jpeg;base64,' + imageData;
 
     }, (err) => {
-      // Handle error
+      this.toaster.toaster_show('Error. Please try after some time.', 'error', 'white');
     });
   }
 
@@ -189,7 +191,26 @@ export class EditprofilePage implements OnInit {
         },
         (err) => console.log(err)
       );
+  }
 
+  check_exist_mobile(event) {
+    if (event.target.value.length == 10) {
+      this.mobile_length = false;
+      this.loader_visibility = true;
+      this.http.get(`${this.url.serverUrl}check_existing_mobile_user?mobile=${event.target.value}&id=${this.session_data.id}`)
+        .subscribe(
+          (res) => {
+            this.loader_visibility = false;
+            if (res == 1) {
+              this.mobile_no_exist = true;
+            }
+            else {
+              this.mobile_no_exist = false;
+            }
+          },
+          (err) => console.log(err)
+        );
+    }
   }
 
 }

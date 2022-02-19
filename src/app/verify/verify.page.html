@@ -9,88 +9,72 @@
   </div>
 
   <div class="p-8 pl-15 pr-15" align="center">
-    <img src="assets/undraw_verified.png" width="60%" height="60%" alt="">
+    <img src="assets/verify.png" width="30%" height="30%" alt="">
   </div>
 
   <div align="center" class="pt-10" style="margin-top: -15%;">
-    <ion-label class="text-2xl" style="color: #428cff;"><b>Forgot Password ?</b></ion-label><br>
-    <ion-label class="text-sm text-white" style="color: #428cff;">Enter your mobile number to get OTP.</ion-label>
+    <ion-label class="text-2xl" style="color: #428cff;"><b>Verify OTP</b></ion-label><br>
+    <ion-label class="text-sm text-white" style="color: #428cff;">Enter 4 digit otp sent on your number.</ion-label>
   </div>
-
-  <!-- <ion-grid fixed class="p-5">
-    <ion-row>
-      <ion-col size="3">
-        <div class="col-3 input-effect">
-          <input class="effect-19" type="number" placeholder=""
-            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-            maxlength="1">
-          <span class="focus-border">
-            <i></i>
-          </span>
-        </div>
-      </ion-col>
-      <ion-col size="3">
-        <div class="col-3 input-effect">
-          <input class="effect-19" type="number" placeholder=""
-            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-            maxlength="1">
-          <span class="focus-border">
-            <i></i>
-          </span>
-        </div>
-      </ion-col>
-      <ion-col size="3">
-        <div class="col-3 input-effect">
-          <input class="effect-19" type="number" placeholder=""
-            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-            maxlength="1">
-          <span class="focus-border">
-            <i></i>
-          </span>
-        </div>
-      </ion-col>
-      <ion-col size="3">
-        <div class="col-3 input-effect">
-          <input class="effect-19" type="number" placeholder=""
-            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-            maxlength="1">
-          <span class="focus-border">
-            <i></i>
-          </span>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid> -->
-
   <form #form_register="ngForm" class="form">
-    <ion-row class="p-4">
-      <ion-col size="12">
-      <div class="bg-white border-2 border-gray-300 rounded-sm">
-        <ion-input type="text" placeholder="OTP" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
-        ngModel name="otp"></ion-input>
-      </div>   
+
+    <ion-grid fixed class="p-5">
+      <ion-row>
+        <ion-col size="3">
+          <div class="col-3 input-effect">
+            <input class="effect-19" type="number" maxlength="1" id="1" (keyup)="focusnext($event)">
+            <span class="focus-border">
+              <i></i>
+            </span>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div class="col-3 input-effect">
+            <input class="effect-19" type="number" maxlength="1" id="2" (keyup)="focusnext($event)">
+            <span class="focus-border">
+              <i></i>
+            </span>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div class="col-3 input-effect">
+            <input class="effect-19" type="number" maxlength="1" id="3" (keyup)="focusnext($event)">
+            <span class="focus-border">
+              <i></i>
+            </span>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div class="col-3 input-effect">
+            <input class="effect-19" type="number" maxlength="1" id="4" (keyup)="focusnext($event)">
+            <span class="focus-border">
+              <i></i>
+            </span>
+          </div>
+        </ion-col>      
         <ion-text class="error_msg" color="danger" *ngIf="otp_error">Enter valid OTP. </ion-text>
 
-    </ion-col>
-  </ion-row>
+      </ion-row>
+
+    </ion-grid>
 
 
-<div class=" p-4 pt-2 pl-6 pr-6" (click)="verify_otp(form_register)">
-  <button expand="block"  class="btn-3 w-full p-2 text-white rounded-sm">
-    Verify OTP <ion-icon class="shake-horizontal ml-3" color="light" slot="end" name="arrow-forward-outline">
-    </ion-icon>
-  </button>
-  <!-- <ion-button class="w-full -mt-5" expand="block" color="primary">
-    Verify OTP <ion-icon class="shake-horizontal ml-3" color="light" slot="end" name="arrow-forward-outline">
-    </ion-icon>
-  </ion-button> -->
-</div>
-</form>
+    <div class=" p-4 pt-2 pl-6 pr-6" (click)="verify_otp()">
+      <button expand="block" class="btn-3 w-full p-2 text-white rounded-sm">
+        Verify OTP <ion-icon class="shake-horizontal ml-3" color="light" slot="end" name="arrow-forward-outline">
+        </ion-icon>
+      </button>
+    
+    </div>
+  </form>
 
 
   <div class="flex justify-end pr-6">
     <span>
-      <p class="text-sm"><b class="text-blue-600">Resend 00:60</b></p>
+      <p class="text-sm">
+        <b class="text-grey"  *ngIf="time>0">Resend <span> 00:{{time}}</span> </b>
+        <b class="text-blue-600" (click)="resend_otp()" *ngIf="time==0">Resend </b>
+      </p>
     </span>
   </div>
 

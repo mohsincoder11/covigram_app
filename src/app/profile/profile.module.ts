@@ -8,13 +8,16 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
 
+import { FooterdoctorPageModule } from '../footerdoctor/footerdoctor.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilePageRoutingModule
+    ProfilePageRoutingModule,
+    FooterdoctorPageModule
   ],
   declarations: [ProfilePage]
 })
-export class ProfilePageModule {}
+export class ProfilePageModule { }

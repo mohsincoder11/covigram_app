@@ -21,30 +21,34 @@
   <div>
 
     
-    <div class="col-3 input-effect">
-      <input class="effect-19" type="number" placeholder="Mobile Number"
-        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-        maxlength="10">
-      <span class="focus-border">
-        <i></i>
-      </span>
-    </div>
+    <form #form_login="ngForm" class="form">
 
-    <div class="col-3 input-effect">
-      <input class="effect-19" type="text" placeholder="Password"
-        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-        maxlength="8">
-      <span class="focus-border">
-        <i></i>
-      </span>
-    </div>
-
-    <div class=" p-4 pt-2 pl-6 pr-6" routerLink="/doctordash">
-      <ion-button class="w-full -mt-5" expand="block" color="primary">
-        Login <ion-icon class="shake-horizontal ml-3" color="light" slot="end" name="arrow-forward-outline">
-        </ion-icon>
-      </ion-button>
-    </div>
+      <ion-row class="p-4">  
+  
+        <ion-col size="12">
+          <div class="bg-white border-2 border-gray-300 rounded-sm">
+            <ion-input placeholder="Email / Username" type="text" ngModel name="email_username"></ion-input>
+          </div>
+          <ion-text class="error_msg" color="danger" *ngIf="email_username">Enter email/ username.</ion-text>
+  
+        </ion-col>
+  
+        <ion-col size="12">
+          <div class="bg-white border-2 border-gray-300 rounded-sm">
+            <ion-input placeholder="Password" type="password" ngModel name="password"></ion-input>
+          </div>
+          <ion-text class="error_msg" color="danger" *ngIf="password">Enter password.</ion-text>
+  
+        </ion-col>
+      </ion-row>
+  
+      <div class="pt-2 pl-6 pr-6">
+        <button expand="block" class="btn-3 w-full p-2 text-white rounded-sm" (click)="log_in(form_login)">
+          Login <ion-icon class="shake-horizontal ml-3" color="light" slot="end" name="arrow-forward-outline"></ion-icon>
+        </button>
+       
+      </div>
+    </form>
 
     <div class="flex justify-between pl-6 pr-6 pt-1">
       <div routerLink="/createaccdoctor">
@@ -53,15 +57,17 @@
           </p>
         </span>
       </div>
-      <div routerLink="/doctorforgot">
+      <div routerLink="/forgot">
         <span>
           <p class="text-sm"><b class="text-blue-600 " style="font-size: 12px;">Forgot Password ?</b></p>
         </span>
       </div>
     </div>
-
-
-
   </div>
 
+  <div class="loader" *ngIf="loader_visibility">
+    <svg class="spinner" width="65px" height="65px" viewBox="0 0 50 50">
+      <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+    </svg>
+  </div>
 </ion-content>

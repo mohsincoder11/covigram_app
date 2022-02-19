@@ -574,3 +574,11 @@ a:hover {
 .booking-form .submit-btn:focus {
   opacity: 0.9
 }
+
+.preview_img{
+  img{
+     height:8vh;
+  width:8vh;
+  border-radius:5px;
+  }
+}

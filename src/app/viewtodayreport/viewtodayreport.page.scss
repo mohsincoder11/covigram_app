@@ -1,0 +1,196 @@
+.btn-grad {
+  background-image: linear-gradient(to right, #0c4d8f 0%, #0c4d8f 100%)
+}
+
+.btn-grad1 {
+  background-image: linear-gradient(to right, #e20901 0%, #e20901 100%)
+}
+
+.btn-grad2 {
+  background-image: linear-gradient(to right, #007a66 0%, #007a66 100%)
+}
+
+.btn-grad3 {
+  background-image: linear-gradient(to right, #be0069 0%, #be0069 100%)
+}
+
+
+.btn-grad {
+  width: 100%;
+  // margin: 5px;
+  padding: 5px 5px;
+  text-align: center;
+  // text-transform: uppercase;
+  transition: 0.5s;
+  // background-size: 200% auto;
+  color: white;
+  border-radius: 5px;
+  // display: block;
+  font-size: 0.7em;
+}
+
+.btn-grad:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+.footer_div {
+  background: linear-gradient(90deg, #4BE3C1, #1E9EEB);
+}
+
+.border-radius-on-button ion-segment-button {
+  --background: lightpink;
+  --background-checked: lightblue;
+  --border-radius: 50%;
+}
+
+.fix-ripple ion-segment-button {
+  --border-radius: 20px;
+  --indicator-transition: none;
+
+  overflow: hidden;
+}
+
+.parent-border-radius {
+  //   background: #e5e5e5;
+  background: linear-gradient(90deg, #4BE3C1, #1E9EEB);
+  border-radius: 0px 0px 0 0;
+}
+
+/* This is added for the iOS segment indicator */
+.parent-border-radius ion-segment-button:first-of-type {
+  --border-radius: 5px 5px 5px 5px;
+}
+
+.parent-border-radius ion-segment-button:last-of-type {
+  --border-radius: 5px 5px 5px 5px;
+}
+
+
+.btn-3 {
+  background-image: linear-gradient(to right, #297CB0 0%, #297CB0 5%, #6FC8B6 100%);
+}
+
+
+.modal {
+  padding: 5px;
+  border: #6FC8B6 1px solid;
+  width: 100%;
+  margin-top: 20px;
+
+}
+
+// CustomeModal Start
+
+.custom_modal {
+  visibility: hidden;
+  display: none;
+  transition: 0.5s ease-in;
+  background: rgba(255, 255, 255);
+  position: absolute;
+  top: 40vh;
+  left: 2vh;
+  right: 2vh;
+  z-index: 9998;
+  width: 90%;
+  // height: 32%;
+  border: 2px solid #e6e6e6;
+  // box-shadow: rgba(248, 248, 248, 0.5) 0px 6px 24px;
+  border-radius: 5px;
+  padding: 2vh 2vh 4vh 2vh;
+}
+
+.icon_row {
+  float: right;
+  color: var(--ion-color-dark);
+
+  ion-icon {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
+
+  100% {
+    -webkit-transform: translateY(-5vh);
+    transform: translateY(-5vh)
+  }
+}
+
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
+
+  100% {
+    -webkit-transform: translateY(-5vh);
+    transform: translateY(-5vh)
+  }
+}
+
+.custom_modal.show {
+  -webkit-animation: slide-top .5s cubic-bezier(.25, .46, .45, .94) both;
+  animation: slide-top .5s cubic-bezier(.25, .46, .45, .94) both;
+
+  display: block;
+  position: fixed;
+  // transform: translate(-2%, -30%);
+  visibility: visible;
+}
+
+.custom_modal.hide {
+  transition: 0.5s ease-in-out;
+  visibility: hidden;
+  display: none;
+}
+
+// CustomeModal End
+
+.upload_file {
+  height: 15vh;
+  width: auto;
+}
+
+.report_card_bottom_row {
+  margin-top: 5px;
+  text-align: center;
+  .primary{
+    background-color: #1818fd;
+  }
+  .danger{
+    background-color: #fd1823;
+  }
+  button {
+    padding: 0.5em 1em;
+    font-size: 0.8em;
+    color: #ffffff;
+    border-radius: 3px;
+    ion-icon{
+      font-weight: bold;
+      font-size:1em;
+    }
+  }
+}
+
+.upload_report_label{
+  padding:3% 3% 0 3%;
+  font-size:1em;
+  button{
+    padding: 0.5em 1em;
+    font-size: 0.8em;
+    background-color: #1818fd;
+    color: #ffffff;
+    border-radius: 3px;
+  }
+}
+// CustomeModal End

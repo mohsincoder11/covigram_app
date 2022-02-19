@@ -148,10 +148,10 @@ export class AddfamilymemeberPage implements OnInit {
     this.camera.getPicture(options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       this.image = imageData;
-      //    this.croppedImagepath = 'data:image/jpeg;base64,' + imageData;
+      this.img_url = 'data:image/jpeg;base64,' + imageData;
 
     }, (err) => {
-      // Handle error
+      this.toaster.toaster_show('Error. Please try after some time.', 'error', 'white');
     });
   }
 

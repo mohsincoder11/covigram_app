@@ -1,97 +1,113 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="pl-3" routerLink="/doctordash">
+      <svg xmlns="http://www.w3.org/2000/svg" class=" h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+          clip-rule="evenodd" />
+      </svg>
+    </ion-buttons>
+    <ion-title class="text-blue-500 text-base">Profile </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
 <ion-content>
+  <div class="p-4">
+    <ion-card class="bg-white">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="3">
+            <img src="{{img_url}}" alt="" />
+          </ion-col>
+          <ion-col size="9">
+            <p class="text-black pt-2">Name : Dr. {{session_data.f_name}} {{session_data.l_name}}</p>
+            <p style="font-size: 0.9em;"><span class="text-black">Email/ Username :</span>
+              {{session_data.email_username}}</p>
+          </ion-col>
+        </ion-row>
 
-  <!-- <div routerLink="/doctordash" class="pt-5 pl-5">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd"
-        d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-        clip-rule="evenodd" />
-    </svg>
-  </div> -->
+        <ion-row>
+          <ion-col size="7">
+            <ion-label style="font-size: 0.9em;"><span class="text-black ">Specialization :</span>
+              {{session_data.specialization}}
+            </ion-label>
+          </ion-col>
+          <ion-col size="5">
+            <ion-label style="font-size: 0.9em;"><span class="text-black ">Gender :</span> {{session_data.gender}}
+            </ion-label>
+          </ion-col>
+        </ion-row>
 
-  <div align="center" class="pt-3  rounded-br-lg rounded-bl-lg footer_div">
-    <img src="assets/iconmenu.png" width="20%" height="20%" alt="">
-    <ion-text class="pt-3" color="dark"><b>Mr. Rakesh</b><br>
-      <p class="text-sm text-black">rakesh.nfo@gmail.com</p><br>
-    </ion-text>
+        <ion-row>
+          <ion-col size="7">
+            <ion-label style="font-size: 0.9em;"><span class="text-black ">Mobile No :</span> {{session_data.mobile}}
+            </ion-label>
+          </ion-col>
+
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col size="7">
+            <ion-label style="font-size: 0.9em;"><span class="text-black ">State Licence No. :</span>
+              {{session_data.state_licence_no}}</ion-label>
+          </ion-col>
+          <ion-col size="5">
+            <ion-label style="font-size: 0.9em;"><span class="text-black ">NPI No. :</span> {{session_data.npi_no}}
+            </ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-label style="font-size: 0.9em;"><span class="text-black ">Office Address :</span>
+              {{session_data.office_address}}
+            </ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <ion-label style="font-size: 0.9em;"><span class="text-black ">Fax No. :</span> {{session_data.fax_no}}
+            </ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <ion-label style="font-size: 0.9em;"><span class="text-black ">Work Phone No. :</span>
+              {{session_data.work_phone}}
+            </ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-label style="font-size: 0.9em;"><span class="text-black ">Covid Lab Registration :</span>
+              {{session_data.covid_lab_reg}}
+            </ion-label>
+          </ion-col>
+
+        </ion-row>
+        <hr>
+        <ion-row style="border-top: 1px solid rgb(228, 228, 228);">
+          <ion-col size="12" align="center" routerLink="/editdoctor">
+            <ion-label style="font-size: 1em; text-align: center; color: blue;"> Edit Profile</ion-label>
+          </ion-col>
+
+        </ion-row>
+
+      </ion-grid>
+    </ion-card>
+
+    <ion-card class="bg-white p-1">
+      <ion-row>
+        <ion-col size="12">
+          <ion-text color="dark" class="p1-4 text-sm" (click)="log_out()">
+            <ion-icon class="text-base" color="primary" name="log-out-outline"></ion-icon>&nbsp; &nbsp;Log Out
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-card>
   </div>
 
-  <!-- <ion-list class="menu-items" lines="none">        
-    <ion-menu-toggle auto-hide="false"> -->
-  <ion-item lines="none" style="margin-top: 5%;">
-    <ion-icon class="text-base text-gray-600" name="person-add"></ion-icon>&nbsp;&nbsp;
-    <ion-text color="dark" class="pl-4 text-sm"><b>Edit Profile</b></ion-text>
-  </ion-item>
 
-  <!-- <ion-item lines="none">
-    <ion-icon class="text-base text-gray-600" name="add-circle"></ion-icon>&nbsp;&nbsp;
-    <ion-text color="dark" class="pl-4 text-sm"><b>Add Doctor & Hospital</b></ion-text>
-  </ion-item> -->
 
-  <!-- <ion-item lines="none">
-    <ion-icon class="text-base text-gray-600" name="time"></ion-icon>&nbsp;&nbsp;
-    <ion-text color="dark" class="pl-4 text-sm"><b>Manage Time Slot</b></ion-text>
-  </ion-item>
-
-  <ion-item lines="none">
-    <ion-icon class="text-base text-gray-600" name="settings"></ion-icon>&nbsp;&nbsp;
-    <ion-text color="dark" class="pl-4 text-sm"><b>Appointment Setting</b></ion-text>
-  </ion-item>
-
-  <ion-item lines="none">
-    <ion-icon class="text-base text-gray-600" name="calendar"></ion-icon>&nbsp;&nbsp;
-    <ion-text color="dark" class="pl-4 text-sm"><b>Add Leave Days</b></ion-text>
-  </ion-item> -->
-
-  <ion-item lines="none">
-    <ion-icon class="text-base text-gray-600" name="chatbox-ellipses"></ion-icon>&nbsp;&nbsp;
-    <ion-text color="dark" class="pl-4 text-sm"><b>Feedback</b></ion-text>
-  </ion-item>
-
-  <ion-item lines="none">
-    <ion-icon class="text-base text-gray-600" name="share-social"></ion-icon>&nbsp;&nbsp;
-    <ion-text color="dark" class="pl-4 text-sm"><b>Share App</b></ion-text>
-  </ion-item>
-
-  <ion-item lines="none">
-    <ion-icon class="text-base text-gray-600" name="star"></ion-icon>&nbsp;&nbsp;
-    <ion-text color="dark" class="pl-4 text-sm"><b>Rate App</b></ion-text>
-  </ion-item>
-
-  <ion-item lines="none">
-    <ion-icon class="text-base text-gray-600" name="log-out"></ion-icon>&nbsp;&nbsp;
-    <ion-text color="dark" class="pl-4 text-sm"><b>Log Out</b></ion-text>
-  </ion-item>
-  <!-- </ion-menu-toggle>
-  </ion-list> -->
 </ion-content>
-
-<div class="flex justify-between  rounded-tr-3xl  rounded-tl-3xl  shadow-2xl footer_div">
-  <div class="pl-4">
-    <ion-tab-button tab="music" routerLink="/doctordash">
-      <ion-label><b>Home</b></ion-label>
-      <ion-icon style="font-size: 15px; font-weight: 500; margin-top: 2;" name="home" color="light"></ion-icon>
-    </ion-tab-button>
-  </div>
-
-  <div>
-    <ion-tab-button tab="music" routerLink="/todayapp">
-      <ion-label><b>Appointment</b></ion-label>
-      <ion-icon style="font-size: 15px; font-weight: 500; margin-top: 2;" name="document-text" color="light"></ion-icon>
-    </ion-tab-button>
-  </div>
-
-  <div>
-    <ion-tab-button tab="games" routerLink="/reports">
-      <ion-label><b>Reports</b></ion-label>
-      <ion-icon style="font-size: 15px; font-weight: 500;" color="light" name="add-circle"></ion-icon>
-    </ion-tab-button>
-  </div>
-
-  <div class="pr-4" routerLink="/profile">
-    <ion-tab-button tab="games">
-      <ion-label><b>Profile</b></ion-label>
-      <ion-icon style="font-size: 15px; font-weight: 500;" color="light" name="person"></ion-icon>
-    </ion-tab-button>
-  </div>
-
-</div>
+<app-footerdoctor></app-footerdoctor>

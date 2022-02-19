@@ -19,16 +19,7 @@ export class LoginPage implements OnInit {
   doctor_id: boolean = false;
   public loader_visibility = true;
   doctor_list;
-  session_data = {
-    id: "",
-    f_name: "",
-    l_name: "",
-    email_username: "",
-    gender: "",
-    u_type: "",
-    doctor_id: "",
-    image: ""
-  };
+  session_data =[];
   formdata = {
     mobile: "",
     password: "",

@@ -121,14 +121,14 @@
 
     <ion-row class="pl-4 pr-4">
       <ion-col size="6">
-        <div class="bg-white p-2 rounded-sm" align="center" (click)="selectImage('camera')">
-          <img src="assets/c1.png" alt="">
+        <div class="bg-white p-2 rounded-sm preview_img" align="center" (click)="selectImage('camera')">
+          <img src="{{prescription_camera}}" alt="">
           <ion-label>Camera</ion-label>
         </div>
       </ion-col>
       <ion-col size="6">
-        <div class="bg-white p-2 rounded-sm" align="center" (click)="selectImage('image')">
-          <img src="assets/g1.png" alt="">
+        <div class="bg-white p-2 rounded-sm preview_img" align="center" (click)="selectImage('image')">
+          <img src="{{prescription_file}}" alt="">
           <ion-label>Image</ion-label>
         </div>
       </ion-col>
@@ -143,14 +143,14 @@
 
     <ion-row class="pl-4 pr-4 pt-1">
       <ion-col size="6">
-        <div class="bg-white p-2 rounded-sm" align="center" (click)="selectImage2('camera')">
-          <img src="assets/c1.png" alt="">
+        <div class="bg-white p-2 rounded-sm preview_img" align="center" (click)="selectImage2('camera')">
+          <img src="{{report_camera_preview}}" alt="">
           <ion-label>Camera</ion-label>
         </div>
       </ion-col>
       <ion-col size="6">
-        <div class="bg-white p-2 rounded-sm" align="center" (click)="selectImage2('image')">
-          <img src="assets/g1.png" alt="">
+        <div class="bg-white p-2 rounded-sm preview_img" align="center" (click)="selectImage2('image')">
+          <img src="{{report_file_preview}}" alt="">
           <ion-label>Image</ion-label>
         </div>
       </ion-col>

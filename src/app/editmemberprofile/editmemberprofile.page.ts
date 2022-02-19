@@ -41,6 +41,7 @@ export class EditmemberprofilePage implements OnInit {
     relation: "",
     doctor_id: "",
   };
+  exist_image;
   constructor(
     private router: Router,
     private storage: Storage,
@@ -69,10 +70,10 @@ export class EditmemberprofilePage implements OnInit {
     this.member_data['gender'] = this.edit_member['gender'];
     this.member_data['doctor_id'] = this.edit_member['doctor_id'];
     this.member_data['relation'] = this.edit_member['relation'];
-
+    this.exist_image=this.edit_member['image'];
+    this.img_url = this.url.imageurl + 'profile/' + this.edit_member['image'];
     this.doctor_list = this.toaster.common_doctor_list;
     this.storage.get('login_details').then(res => {
-      this.img_url = this.url.imageurl + 'profile/noimage.png';
       this.parent_id = res.id;
     })
     this.get_doctor();
@@ -115,6 +116,7 @@ export class EditmemberprofilePage implements OnInit {
       f_data.append('gender', formdata.value.gender);
       f_data.append('relation', formdata.value.relation);
       f_data.append('id', this.edit_member.id);
+      f_data.append('exist_image', this.exist_image);
 
       this.http
         .post(`${this.url.serverUrl}update_patient_member`, f_data)
@@ -168,12 +170,11 @@ export class EditmemberprofilePage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
     }
     this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
       this.image = imageData;
-      //    this.croppedImagepath = 'data:image/jpeg;base64,' + imageData;
+      this.img_url = 'data:image/jpeg;base64,' + imageData;
 
     }, (err) => {
-      // Handle error
+      this.toaster.toaster_show('Error. Please try after some time.', 'error', 'white');
     });
   }
 
