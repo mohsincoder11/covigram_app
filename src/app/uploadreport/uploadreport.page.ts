@@ -27,7 +27,7 @@ export class UploadreportPage implements OnInit {
   patient_id_err: boolean = false;
   doctor_id_err: boolean = false;
   vaccine_detail_err: boolean = false;
-
+  kbytes = 0;
   my_member;
   test_name;
   doctor_list;
@@ -49,6 +49,8 @@ export class UploadreportPage implements OnInit {
   prescription_file = 'assets/g1.png';
   report_camera_preview = 'assets/c1.png';
   report_file_preview = 'assets/g1.png';
+  prescription_error: boolean = false;
+  report_error: boolean = false;
   constructor(
     private camera: Camera,
     public actionSheetController: ActionSheetController,
@@ -68,7 +70,7 @@ export class UploadreportPage implements OnInit {
   ionViewWillEnter() {
     this.reset_preview('prescription');
     this.reset_preview('report');
-  this.vaccine_detail = 'Vaccination Details';
+    this.vaccine_detail = 'Vaccination Details';
     this.doctor_id = 'Select Doctor';
     this.center_id = 'Select Center';
     this.doctor_list = this.toaster.common_doctor_list;
@@ -158,15 +160,19 @@ export class UploadreportPage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
     }
     this.camera.getPicture(options).then((imageData) => {
-      this.prescription_image = imageData;
-      this.reset_preview('prescription');
-      if (type == 1)
-        this.prescription_camera = 'data:image/jpeg;base64,' + imageData;
-      else
-        this.prescription_file = 'data:image/jpeg;base64,' + imageData;
+      let img_Size = this.calculateImageSize(imageData);
+      if (img_Size <= 1024) {
+        this.prescription_image = imageData;
+        this.prescription_error = false;
+        this.reset_preview('report');
+        if (type == 1)
+          this.prescription_camera = 'data:image/jpeg;base64,' + imageData;
+        else
+          this.prescription_file = 'data:image/jpeg;base64,' + imageData;
+      } else
+        this.prescription_error = true;
     }, (err) => {
       this.toaster.toaster_show('Error. Please try after some time.', 'error', 'white');
-
     });
   }
 
@@ -188,17 +194,35 @@ export class UploadreportPage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
     }
     this.camera.getPicture(options).then((imageData) => {
-      this.report_file = imageData;
-      this.reset_preview('report');
-      if (type == 1)
-        this.report_camera_preview = 'data:image/jpeg;base64,' + imageData;
-      else
-        this.report_file_preview = 'data:image/jpeg;base64,' + imageData;
-
+      let img_Size = this.calculateImageSize(imageData);
+      if (img_Size <= 1024) {
+        this.report_file = imageData;
+        this.report_error = false;
+        this.reset_preview('report');
+        if (type == 1)
+          this.report_camera_preview = 'data:image/jpeg;base64,' + imageData;
+        else
+          this.report_file_preview = 'data:image/jpeg;base64,' + imageData;
+      } else
+        this.report_error = true;
     }, (err) => {
       this.toaster.toaster_show('Error. Please try after some time.', 'error', 'white');
-
     });
+  }
+
+  calculateImageSize(base64String) {
+    let padding;
+    let inBytes;
+    let base64StringLength;
+    if (base64String.endsWith('==')) { padding = 2; }
+    else if (base64String.endsWith('=')) { padding = 1; }
+    else { padding = 0; }
+    base64StringLength = base64String.length;
+    console.log(base64StringLength);
+    inBytes = (base64StringLength / 4) * 3 - padding;
+    console.log(inBytes);
+    this.kbytes = inBytes / 1000;
+    return this.kbytes;
   }
 
   reset_preview(reset_for) {

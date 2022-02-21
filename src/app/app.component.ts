@@ -15,11 +15,11 @@ import { ToasterService } from "./services/toaster/toaster.service";
 export class AppComponent {
   editurl;
   img_url;
-  session_data={
-    f_name:"",
-    l_name:"",
-    email_username:"",
-    image:""
+  session_data = {
+    f_name: "",
+    l_name: "",
+    email_username: "",
+    image: ""
   };
 
   constructor(
@@ -37,6 +37,14 @@ export class AppComponent {
   initializeApp() {
     this.storage.create();
     this.platform.ready().then(() => {
+      if (this.platform.is('android')) {
+        console.log('android');
+      } else if (this.platform.is('ios')) {
+        console.log('ios');
+      } else {
+        //fallback to browser APIs or
+        console.log('The platform is not supported');
+      }
       this.storage.get('login_details').then(res => {
         if (res) {
           if (res.u_type == 1) {
@@ -54,16 +62,16 @@ export class AppComponent {
 
   get_session_data() {
     this.storage.get('login_details').then(res => {
-      this.img_url=this.url.imageurl+'profile/'+res.image;
-      this.session_data['f_name']=res.f_name;
-      this.session_data['l_name']=res.l_name;
-      this.session_data['email_username']=res.email_username;
-      this.session_data['image']=res.image;
+      this.img_url = this.url.imageurl + 'profile/' + res.image;
+      this.session_data['f_name'] = res.f_name;
+      this.session_data['l_name'] = res.l_name;
+      this.session_data['email_username'] = res.email_username;
+      this.session_data['image'] = res.image;
       if (res.u_type == 1) {
         this.editurl = 'editprofile';
       }
       else {
-        this.editurl ='editdoctorprofile';
+        this.editurl = 'editdoctorprofile';
       }
 
     })
@@ -82,7 +90,7 @@ export class AppComponent {
   }
 
   log_out() {
-    this.toaster.common_family_member_list=null;
+    this.toaster.common_family_member_list = null;
     this.storage.remove('login_details').then(re => {
       this.router.navigateByUrl('/home');
     })
