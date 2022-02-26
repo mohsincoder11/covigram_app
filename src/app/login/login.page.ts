@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
   public password: boolean = false;
   email_username: boolean = false;
   doctor_id: boolean = false;
-  public loader_visibility = true;
+  loader_visibility = false;
   doctor_list;
   session_data =[];
   formdata = {

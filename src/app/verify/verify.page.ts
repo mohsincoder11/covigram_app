@@ -30,12 +30,11 @@ export class VerifyPage implements OnInit {
   ngOnInit() {
   }
 
-
-
   ionViewWillEnter() {
     this.mobile_number = this.route.snapshot.paramMap.get('number');
     this.otp = this.route.snapshot.paramMap.get('otp');
     this.starttimer();
+    this.toaster.doctor_backurl='verify/'+ this.mobile_number+'/'+this.otp;
   }
 
   resend_otp() {
@@ -55,6 +54,7 @@ export class VerifyPage implements OnInit {
         }
       );
   }
+
   starttimer() {
     this.time = '59';
     var a = setInterval(() => {

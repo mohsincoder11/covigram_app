@@ -66,14 +66,14 @@ export class CreateaccdoctorPage implements OnInit {
       formdata.value.mobile && formdata.value.mobile.toString().length == 10 && formdata.value.password && formdata.value.gender && formdata.value.gender != 'Select Gender' && formdata.value.specialization && formdata.value.state_licence_no && formdata.value.npi_no && formdata.value.covid_lab_reg && formdata.value.office_address && formdata.value.work_phone && formdata.value.fax_no) {
       this.loader_visibility = true;
       this.mobile_length = false;
-      console.log(formdata.value);
       this.http
         .post(`${this.url.serverUrl}send_mobile_verify_otp`, formdata.value)
         .subscribe(
           (res) => {
-            this.loader_visibility = false;
             formdata.value.otp = res;
             formdata.value.user_type = 2;
+            this.loader_visibility = false;
+
             let navExtra: NavigationExtras = {
               state: {
                 regData: formdata.value,
@@ -106,7 +106,8 @@ export class CreateaccdoctorPage implements OnInit {
           },
           (err) => console.log(err)
         );
-    }
+    }else
+    this.mobile_length=true;
   }
 
   check_email_username_Exist(ev) {

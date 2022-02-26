@@ -49,7 +49,7 @@ export class ForgotPage implements OnInit {
           
             this.loader_visibility = false;
             if (res == 0) {
-              this.toaster.toaster_show('This mobile number is not registered with us', 'error', 'white');
+              this.toaster.toaster_show('This mobile number is not registered with us.', 'error', 'white');
             }
             else {
               this.router.navigate(['/verify/' + formdata.value.mobile + '/' + res]);

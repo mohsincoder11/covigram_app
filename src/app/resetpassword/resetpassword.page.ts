@@ -15,6 +15,7 @@ export class ResetpasswordPage implements OnInit {
   fill_all;
   both_same;
   loader_visibility;
+  backurl;
   constructor(
     public router: Router,
     public route: ActivatedRoute,
@@ -26,6 +27,7 @@ export class ResetpasswordPage implements OnInit {
   ngOnInit() {
   }
   ionViewWillEnter() {
+    this.backurl=this.toaster.doctor_backurl;
     this.mobile_number = this.route.snapshot.paramMap.get('number');
   }
 
@@ -50,7 +52,11 @@ export class ResetpasswordPage implements OnInit {
 
 
           },
-          (err) => console.log(err)
+          (err) =>{
+            this.loader_visibility = false;
+
+            this.toaster.toaster_show('Server error.', 'error', 'white');
+        } 
         );
     }
 

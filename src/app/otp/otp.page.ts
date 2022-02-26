@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
 import { UrlService } from "../services/url/url.service";
 import { ToasterService } from "../services/toaster/toaster.service";
-import { NgForm } from '@angular/forms';
 
 import * as $ from "jquery";
 
@@ -79,7 +78,7 @@ export class OtpPage implements OnInit {
             (res) => {
               this.loader_visibility = false;
               if (res > 0) {
-                this.toaster.toaster_show('Account created successfully. Wait sometime for admim approval', 'success', 'white');
+                this.toaster.toaster_show('Success! Registration successful. Wait for admin approval.', 'success', 'white');
                 if (this.regUserData.user_type == 2)
                   this.router.navigate(['/doctorlogin']);
                 else

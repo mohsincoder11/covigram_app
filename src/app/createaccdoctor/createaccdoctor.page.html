@@ -23,9 +23,9 @@
       <ion-row class="p-4">
         <ion-col size="12">
           <div class="bg-white border-2 border-gray-300 rounded-sm pl-2">
-            <ion-input type="text" placeholder="First Name" ngModel name="f_name"></ion-input>
+            <ion-input type="text" placeholder="First Name" ngModel name="f_name"  onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'');"></ion-input>
           </div>
-          <ion-text class="error_msg" color="danger" *ngIf="f_name" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'');"> This field is required.
+          <ion-text class="error_msg" color="danger" *ngIf="f_name"> This field is required.
           </ion-text>
         </ion-col>
         <ion-col size="12">
@@ -154,5 +154,10 @@
       <p class="text-sm pl-1" style="font-size: 12px;">Already have an account? <b class="text-blue-600">Login</b></p>
     </span>
   </div>
-
+  
+  <div class="loader" *ngIf="loader_visibility">
+    <svg class="spinner" width="65px" height="65px" viewBox="0 0 50 50">
+      <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+    </svg>
+  </div>
 </ion-content>

@@ -78,6 +78,7 @@ export class CreateaccPage implements OnInit {
 
   check_exist_mobile(event) {
     if (event.target.value.length == 10) {
+      console.log('check');
       this.mobile_length = false;
       this.loader_visibility = true;
       this.http.get(`${this.url.serverUrl}check_existing_mobile_user?mobile=${event.target.value}`)
