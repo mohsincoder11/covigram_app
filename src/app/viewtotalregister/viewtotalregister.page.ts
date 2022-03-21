@@ -110,11 +110,13 @@ export class ViewtotalregisterPage implements OnInit {
       .get(`${this.url.serverUrl}get_total_reg_patient_report_api?patient_id=${patient_id}&doctor_id=${doctor_id}`)
       .subscribe(
         (res) => {
-          this.patient_name=res[0].f_name+' '+res[0].l_name;
-         this.patient_id=res[0].patient_id;
-          this.all_report = res;
-          this.all_report.length == 0 ? this.no_report = true : this.no_report = false;
+          this.patient_name=res['user_detail'].f_name+' '+res['user_detail'].l_name;
+          this.patient_id=res['user_detail'].id;
+           this.all_report = res['report'];
+            this.all_report.length == 0 ? this.no_report = true : this.no_report = false;
           this.loader_visibility = false;
+          console.table(res['report']);
+
         },
         (err) => {
         }

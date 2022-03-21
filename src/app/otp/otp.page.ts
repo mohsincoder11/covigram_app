@@ -78,11 +78,14 @@ export class OtpPage implements OnInit {
             (res) => {
               this.loader_visibility = false;
               if (res > 0) {
-                this.toaster.toaster_show('Success! Registration successful. Wait for admin approval.', 'success', 'white');
-                if (this.regUserData.user_type == 2)
+                if (this.regUserData.user_type == 2) {
+                  this.toaster.toaster_show('Success! Registration successful. Wait for admin approval.', 'success', 'white');
                   this.router.navigate(['/doctorlogin']);
-                else
+                }
+                else {
+                  this.toaster.toaster_show('Success! Registration successful.', 'success', 'white');
                   this.router.navigate(['/login']);
+                }
               }
               else {
                 this.toaster.toaster_show('Server error.', 'error', 'white');

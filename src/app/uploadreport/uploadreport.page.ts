@@ -115,10 +115,10 @@ export class UploadreportPage implements OnInit {
       f_data.append('issue_date', formdata.value.issue_date);
       f_data.append('test_type_id', this.test_id);
       f_data.append('center_id', formdata.value.center_id);
-      f_data.append('vaccine_detail', formdata.value.vaccine_detail ? formdata.value.vaccine_detail : null);
+      f_data.append('vaccine_detail', formdata.value.vaccine_detail ? formdata.value.vaccine_detail : '');
       f_data.append('description', formdata.value.description);
       f_data.append('patient_id', formdata.value.patient_id);
-      f_data.append('other_test_name', formdata.value.other_test_name ? formdata.value.other_test_name : null);
+      f_data.append('other_test_name', formdata.value.other_test_name ? formdata.value.other_test_name : '');
       f_data.append('prescription', this.prescription_image);
       f_data.append('ext1', 'jpg');
       f_data.append('report', this.report_file);
@@ -161,7 +161,7 @@ export class UploadreportPage implements OnInit {
     }
     this.camera.getPicture(options).then((imageData) => {
       let img_Size = this.calculateImageSize(imageData);
-      if (img_Size <= 1024) {
+      if (img_Size <= 2024) {
         this.prescription_image = imageData;
         this.prescription_error = false;
         this.reset_preview('report');
@@ -195,7 +195,7 @@ export class UploadreportPage implements OnInit {
     }
     this.camera.getPicture(options).then((imageData) => {
       let img_Size = this.calculateImageSize(imageData);
-      if (img_Size <= 1024) {
+      if (img_Size <= 2024) {
         this.report_file = imageData;
         this.report_error = false;
         this.reset_preview('report');

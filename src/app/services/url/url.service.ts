@@ -5,15 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class UrlService {
   //online
-  //  serverUrl = 'https://demo.webmediaindia.com/covigram/api/'
-  //  imageurl = 'https://demo.webmediaindia.com/covigram/public/uploads/'
-  //  baseUrl = 'https://demo.webmediaindia.com/covigram/'
+   serverUrl = 'https://covigram.com/api/'
+   imageurl = 'https://covigram.com/public/uploads/'
+   baseUrl = 'https://covigram.com/'
 
 
   //local
-  baseUrl = 'http://localhost/covigram/'
-  serverUrl = 'http://localhost/covigram/api/'
-  imageurl = 'http://localhost/covigram/public/uploads/'
+  // baseUrl = 'http://localhost/covigram/'
+  // serverUrl = 'http://localhost/covigram/api/'
+  // imageurl = 'http://localhost/covigram/public/uploads/'
 
   constructor() { }
 }

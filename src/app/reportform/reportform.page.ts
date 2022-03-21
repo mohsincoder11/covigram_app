@@ -8,6 +8,7 @@ import { Camera, CameraOptions } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-reportform',
@@ -48,6 +49,11 @@ export class ReportformPage implements OnInit {
   doctor_backurl;
   test_type_list;
   test_type_id_err;
+  kbytes = 0;
+
+  prescription_error: boolean = false;
+   report_error: boolean = false;
+  
   constructor(
     private camera: Camera,
     public actionSheetController: ActionSheetController,
@@ -77,8 +83,12 @@ export class ReportformPage implements OnInit {
     })
   }
 
+  change_test_type(evt){
+   this.test_id=evt.target.value;
+    console.log(evt.target.value);
+  }
+
   ionViewDidEnter() {
-    let id = this.test_id;
     this.get_test_Type();
   }
   get_test_Type() {
@@ -121,9 +131,9 @@ export class ReportformPage implements OnInit {
       f_data.append('issue_date', formdata.value.issue_date);
       f_data.append('test_type_id', formdata.value.test_type_id);
       f_data.append('center_id', formdata.value.center_id);
-      f_data.append('vaccine_detail', formdata.value.vaccine_detail ? formdata.value.vaccine_detail : null);
+      f_data.append('vaccine_detail', formdata.value.vaccine_detail ? formdata.value.vaccine_detail : '');
       f_data.append('description', formdata.value.description);
-      f_data.append('other_test_name', formdata.value.other_test_name ? formdata.value.other_test_name : null);
+      f_data.append('other_test_name', formdata.value.other_test_name ? formdata.value.other_test_name : '');
       f_data.append('prescription', this.prescription_image);
       f_data.append('ext1', 'jpg');
       f_data.append('report', this.report_file);
@@ -165,12 +175,16 @@ export class ReportformPage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
     }
     this.camera.getPicture(options).then((imageData) => {
+      let img_Size = this.calculateImageSize(imageData);
+      if (img_Size <= 2024) {    
       this.prescription_image = imageData;
       this.reset_preview('prescription');
       if (type == 1)
         this.prescription_camera = 'data:image/jpeg;base64,' + imageData;
       else
         this.prescription_file = 'data:image/jpeg;base64,' + imageData;
+      } else
+      this.prescription_error = true;
     }, (err) => {
       this.toaster.toaster_show('Error. Please try after some time.', 'error', 'white');
 
@@ -195,12 +209,16 @@ export class ReportformPage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
     }
     this.camera.getPicture(options).then((imageData) => {
+      let img_Size = this.calculateImageSize(imageData);
+      if (img_Size <= 2024) {    
       this.report_file = imageData;
       this.reset_preview('report');
       if (type == 1)
         this.report_camera_preview = 'data:image/jpeg;base64,' + imageData;
       else
         this.report_file_preview = 'data:image/jpeg;base64,' + imageData;
+      } else
+      this.report_error = true;
 
     }, (err) => {
       this.toaster.toaster_show('Error. Please try after some time.', 'error', 'white');
@@ -217,6 +235,22 @@ export class ReportformPage implements OnInit {
       this.prescription_camera = 'assets/c1.png';
       this.prescription_file = 'assets/g1.png';
     }
+  }
+
+  
+  calculateImageSize(base64String) {
+    let padding;
+    let inBytes;
+    let base64StringLength;
+    if (base64String.endsWith('==')) { padding = 2; }
+    else if (base64String.endsWith('=')) { padding = 1; }
+    else { padding = 0; }
+    base64StringLength = base64String.length;
+    console.log(base64StringLength);
+    inBytes = (base64StringLength / 4) * 3 - padding;
+    console.log(inBytes);
+    this.kbytes = inBytes / 1000;
+    return this.kbytes;
   }
 }
 

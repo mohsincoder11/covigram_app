@@ -25,6 +25,9 @@ export class CreateaccPage implements OnInit {
   state: boolean = false;
   country: boolean = false;
   loader_visibility: boolean = false;
+  doctor_list;
+  doctor_id: boolean = false;
+
   constructor(
     public router: Router,
     public url: UrlService,
@@ -32,8 +35,24 @@ export class CreateaccPage implements OnInit {
     public toaster: ToasterService,
 
   ) { }
-
+ionViewWillEnter() {
+  this.get_doctor();
+}
   ngOnInit() {
+  }
+  get_doctor() {
+    this.http
+      .get(`${this.url.serverUrl}get_doctor_for_login`)
+      .subscribe(
+        (res) => {
+          this.doctor_list = res;
+          this.loader_visibility = false;
+        },
+        (err) => {
+          this.loader_visibility = false;
+          this.toaster.toaster_show('Server Error. Please try after some time.', 'error', 'white');
+        }
+      );
   }
 
   confirm_mobile(formdata: NgForm) {
@@ -48,9 +67,12 @@ export class CreateaccPage implements OnInit {
     formdata.value.state ? this.state = false : this.state = true;
     formdata.value.country ? this.country = false : this.country = true;
     formdata.value.otp = 1234;
-
+    formdata.value.doctor_id ? this.doctor_id = false : this.doctor_id = true;
+    formdata.value.doctor_id != 'Select Doctor' ? this.doctor_id = false : this.doctor_id = true;
+ 
     if (formdata.value.f_name && formdata.value.l_name && formdata.value.age && formdata.value.gender && formdata.value.gender != 'Select Gender' && formdata.value.email_username && !this.email_username_exist && formdata.value.state && formdata.value.country && !this.mobile_no_exist &&
-      formdata.value.mobile && formdata.value.mobile.toString().length == 10 && formdata.value.password) {
+      formdata.value.mobile && formdata.value.mobile.toString().length == 10 && formdata.value.password && formdata.value.doctor_id &&
+      formdata.value.doctor_id != 'Select Doctor') {
         formdata.value.user_type=1;
       this.loader_visibility = true;
       this.mobile_length = false;

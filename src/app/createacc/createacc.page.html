@@ -104,6 +104,20 @@
         <ion-text class="error_msg" color="danger" *ngIf="country"> This field is required.</ion-text>
 
       </ion-col>
+      <ion-col size="12">
+        <div class=" mt-4">
+          <div class="relative">
+            <select class="block bg-white w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8  " id="grid-state"
+              [ngModel]="'Select Doctor'" name="doctor_id">
+              <option disabled selected>Select Doctor</option>
+              <option *ngFor="let n of doctor_list;let i=index" value="{{n.id}}" selected>{{n.f_name}} </option>
+            </select>
+         
+          </div>
+        </div>
+        <ion-text class="error_msg" color="danger" *ngIf="doctor_id">Select doctor.</ion-text>
+
+      </ion-col>
     </ion-row>
 
 

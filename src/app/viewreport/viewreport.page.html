@@ -30,7 +30,9 @@
 
       <ion-row>
         <ion-col size="6">
-          <ion-label style="font-size: 0.8em;"><span class="text-black ">Report Name :</span> {{ar.test_name}}
+          <ion-label style="font-size: 0.8em;" *ngIf="!ar.other_test_name"><span class="text-black ">Report Name :</span> {{ar.test_name}}
+          </ion-label>
+          <ion-label style="font-size: 0.8em;" *ngIf="ar.other_test_name"><span class="text-black ">Report Name :</span> {{ar.other_test_name}}
           </ion-label>
         </ion-col>
         <ion-col size="6">

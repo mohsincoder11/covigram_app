@@ -37,16 +37,16 @@ export class AppComponent {
   initializeApp() {
     this.storage.create();
     this.platform.ready().then(() => {
-      if (this.platform.is('android')) {
-        console.log('android');
-      } else if (this.platform.is('ios')) {
-        console.log('ios');
-      } else {
-        //fallback to browser APIs or
-        console.log('The platform is not supported');
-      }
+      // if (this.platform.is('android')) {
+      //   console.log('android');
+      // } else if (this.platform.is('ios')) {
+      //   console.log('ios');
+      // } else {
+      //   //fallback to browser APIs or
+      //   console.log('The platform is not supported');
+      // }
       this.storage.get('login_details').then(res => {
-        if (res) {
+        if (res!=null) { 
           if (res.u_type == 1) {
             this.router.navigateByUrl('/dashboard');
           }
